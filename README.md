@@ -43,6 +43,6 @@ npm run test:e2e:desktop
 
 ## Contributing
 
-Once the local checks pass, open feature PRs against `develop` for integration, with one teammate's approval, usually from QA. Promote a reviewed version through a PR from `develop` to `main`, approved by either lead. CI runs the Chromium suite for `develop` and the desktop browser suite for `main`. The [testing and review record](docs/decisions/0008-testing-and-ci.md) explains the gates and QA's responsibilities.
+Once the local checks pass, open feature PRs against `develop` for integration, with one teammate's approval, usually from QA. Promote a reviewed version through a PR from `develop` to `main`, approved by either lead. CI runs the Chromium suite for `develop` and the desktop browser suite for `main`. The [testing and review record](docs/decisions/0006-testing-and-ci.md) explains the gates and QA's responsibilities.
 
 [Decision records](docs/decisions/README.md) explain why the team chose the existing design and development tools.
