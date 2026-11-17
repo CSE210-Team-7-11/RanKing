@@ -1,6 +1,6 @@
 ---
-status: proposed
-date: 2026-11-12
+status: accepted
+date: 2026-11-17
 ---
 
 # ADR-0005 | Set up the development toolchain
@@ -14,7 +14,7 @@ Contributors work asynchronously and need to pull and run another teammate's bra
 ### Dependency management
 
 - One npm package and lockfile for frontend and backend development.
-- Separate frontend and backend packages with separate installations.
+- Separate frontend and backend packages.
 
 ### TypeScript linting
 
@@ -23,9 +23,9 @@ Contributors work asynchronously and need to pull and run another teammate's bra
 
 ## Decision Outcome
 
-The proposed dependency setup uses one package and lockfile so a contributor can install the repository's development dependencies once. CI installs the same locked versions with `npm ci`. Separate TypeScript configurations still describe the browser and Node environments; sharing dependencies does not make their runtime APIs interchangeable.
+Use one npm package and lockfile for frontend and backend development. At this app's scale, separate packages would add configuration and maintenance without a need for independent dependency management. Contributors install the development dependencies once, and CI installs the same locked versions with `npm ci`. Separate TypeScript configurations describe the browser and Node environments.
 
-The linting choice is accepted. Use ESLint with typescript-eslint's recommended and type-aware rules for server and protocol code.
+Use ESLint with typescript-eslint's recommended and type-aware rules for server and protocol code.
 
 ### Consequences
 
@@ -39,10 +39,10 @@ The linting choice is accepted. Use ESLint with typescript-eslint's recommended 
 - Good, because it keeps installation and dependency updates in one place for the class team.
 - Bad, because it couples the two parts' development dependencies.
 
-### Separate packages and installations
+### Separate frontend and backend packages
 
 - Good, because each part can maintain its own tool versions and dependency lifecycle.
-- Bad, because contributors and CI working across both parts must install and maintain both environments.
+- Bad, because separate manifests and package configuration add maintenance without an identified benefit at this app's scale. npm workspaces could provide a shared installation, but the package boundaries would still need to be maintained.
 
 ### ESLint with typescript-eslint
 
