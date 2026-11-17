@@ -8,7 +8,7 @@ For normal feature work, follow [Feature work](#feature-work) below. If you need
 
 We use `backend` and `frontend` as long-lived trunk branches where each area combines its reviewed feature work before merging into `develop`. Create your feature branch from the trunk for your area.
 
-Run `npm run check` and `npm run test:unit`, then open a PR back to your trunk for team review. Work with QA on testing the behavior your feature introduces. The [test instructions](README.md#tests) cover running the integration and browser suites locally when you need to check the combined app.
+Run `npm run check` and `npm run test:unit`, then open a PR back to your trunk for team review. Work with QA on testing the behavior your feature introduces. The [test instructions](TESTING.md) cover running the integration and browser suites locally when you need to check the combined app.
 
 ## Adding or changing a shared interface
 

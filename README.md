@@ -6,7 +6,9 @@ The [design and architecture guide](docs/architecture.md) explains the planned e
 
 ## Local development
 
-Frontend sources belong under `web/`; TypeScript server sources belong under `src/server/`. Tests are organized under `tests/unit/`, `tests/integration/`, and `tests/browser/`.
+Frontend sources belong under `web/`; TypeScript server sources belong under `src/server/`.
+
+The [toolchain reference](docs/architecture/development-toolchain.md) describes the tools used in this repository.
 
 Use Node.js 24 and npm. With nvm, select the project version by running `nvm use` in the repository root. Install the locked dependencies and run the checks:
 
@@ -25,21 +27,7 @@ npm run check
 
 ## Tests
 
-After installing the dependencies, run unit and integration tests with `npm run test:node`.
-
-For Node tests and the Chromium browser suite, install Chromium and run:
-
-```sh
-npx playwright install chromium
-npm test
-```
-
-Once Chromium is installed, `npm run test:e2e` runs just the browser suite. To run the desktop suite across Chromium, Firefox, and WebKit:
-
-```sh
-npx playwright install chromium firefox webkit
-npm run test:e2e:desktop
-```
+See [TESTING.md](TESTING.md) for running the test suites and adding tests.
 
 ## Contributing
 
