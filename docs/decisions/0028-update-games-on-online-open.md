@@ -1,0 +1,59 @@
+---
+status: accepted
+---
+
+# ADR-0028 | Check for game updates on online open
+
+## Context and Problem Statement
+
+[ADR-0022](0022-store-submission-and-automatic-updates.md)
+
+An installed game can fall behind its published build. Players should receive fixes without needing to manage versions, including security fixes that creators publish between visits. On an extremely slow connection, downloading an update can take longer than the time available to play. Requiring every update before launch would make an otherwise usable installation unavailable for the duration of a non-critical download. Limited data allowances also make unnecessary downloads costly for the player.
+
+## Considered Options
+
+- Require every available update before online play.
+- Let players defer any update and use the installed version.
+- Require critical updates before online play and let players defer non-critical updates.
+
+## Decision Outcome
+
+On online open, check for updates. Critical updates must be applied before online play. A player can defer a non-critical update and launch the installed version, so a slow connection does not force them to spend their play session waiting for an optional download. Otherwise the app handles the update automatically.
+
+The distinction matters because the cost of waiting depends on the player's connection, while the need for a particular fix depends on the update. Requiring every update ignores that cost. Allowing every update to be deferred would also allow a player to skip a fix designated as necessary before further online play.
+
+An offline-capable game can use its installed copy while offline. The next online open checks for updates again. Keeping the installed build does not determine which ranked rules the server still supports; eligibility for ranked play on older versions needs an explicit policy.
+
+### Consequences
+
+- Good, because players on slow or limited connections can continue with an installed game when its update is non-critical.
+- Good, because critical updates still take effect before online play without relying on the player to seek out a fix.
+- Bad, because the platform needs a reliable criticality classification. Over-classification would recreate mandatory waits for routine changes, while under-classification could allow an important fix to be deferred.
+- Bad, because players can remain on different builds. Game compatibility and ranked eligibility must account for the version actually running.
+
+Every update strategy depends on connectivity to receive a new build. An offline installation cannot be updated or disabled remotely merely by publishing a replacement.
+
+## Pros and Cons of the Options
+
+### Require every available update
+
+- Good, because an online launch uses the current published build without needing to classify updates for deferral.
+- Bad, because even a cosmetic change can prevent immediate play on an extremely slow connection and consume scarce data.
+
+### Allow any update to be deferred
+
+- Good, because players decide when to spend time and bandwidth on downloads, including when they have only a short opportunity to play.
+- Bad, because the same choice can postpone a critical fix across repeated online sessions.
+
+### Require critical updates and allow other updates to be deferred
+
+- Good, because routine changes need not interrupt play while critical fixes retain their requirement to update.
+- Bad, because update metadata and the player's controls must distinguish the two cases. Critical downloads can still impose long waits, and their failures need recovery handling.
+
+## More Information
+
+The criteria for a critical update, who can assign that classification, and how it applies across installed versions remain open. The deferral controls and treatment of older versions in ranked play also need design.
+
+Background downloads and prefetching concern when bytes are transferred, independently of whether an update is required before launch. They can reduce waiting, but also consume limited bandwidth for games the player may not open. No background-download policy is selected here.
+
+The [installation proposal](../architecture/game-library.md#install-and-update-lifecycle) addresses keeping a complete installed copy during replacement. Package distribution, exact failure handling, and offline requirements remain open. The game's identity and score history survive updates.
