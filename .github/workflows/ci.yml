@@ -2,9 +2,9 @@ name: Checks
 
 on:
   push:
-    branches: [develop, main]
+    branches: [backend, frontend, develop, main]
   pull_request:
-    branches: [develop, main]
+    branches: [backend, frontend, develop, main]
   workflow_dispatch:
 
 permissions:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   check:
-    name: Lint, typecheck, build, and Node tests
+    name: Source checks and Node tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -29,16 +29,20 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - run: npm run test:unit
       - name: Build server
-        if: ${{ hashFiles('src/server/**/*.ts') != '' }}
+        if: ${{ ((github.base_ref || github.ref_name) == 'develop' || (github.base_ref || github.ref_name) == 'main') && hashFiles('src/server/**/*.ts') != '' }}
         run: npm run build:server
       - name: Build frontend
-        if: ${{ hashFiles('web/index.html') != '' }}
+        if: ${{ ((github.base_ref || github.ref_name) == 'develop' || (github.base_ref || github.ref_name) == 'main') && hashFiles('web/index.html') != '' }}
         run: npm run build:web
-      - run: npm run test:node
+      - name: Integration tests
+        if: ${{ (github.base_ref || github.ref_name) == 'develop' || (github.base_ref || github.ref_name) == 'main' }}
+        run: npm run test:integration
 
   browser:
     name: Browser tests
+    if: ${{ (github.base_ref || github.ref_name) == 'develop' || (github.base_ref || github.ref_name) == 'main' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
