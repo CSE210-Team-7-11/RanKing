@@ -1,0 +1,41 @@
+{
+  "name": "ranking",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^24.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit && npm run typecheck:web",
+    "typecheck:web": "tsc --project web/tsconfig.json",
+    "lint": "npm run lint:ts && npm run lint:html && npm run lint:css",
+    "lint:ts": "eslint . --max-warnings 0",
+    "lint:html": "htmlhint \"web/**/*.html\"",
+    "lint:css": "stylelint --allow-empty-input \"web/**/*.css\"",
+    "build": "npm run typecheck && npm run build:server && npm run build:web",
+    "build:server": "tsc -p tsconfig.build.json",
+    "build:web": "vite build",
+    "check": "npm run lint && npm run typecheck",
+    "test": "npm run test:node && npm run test:e2e",
+    "test:node": "npm run test:unit && npm run test:integration",
+    "test:unit": "node --test \"tests/unit/**/*.test.ts\"",
+    "test:integration": "node --test \"tests/integration/**/*.test.ts\"",
+    "test:e2e": "playwright test --project=chromium --pass-with-no-tests",
+    "test:e2e:desktop": "playwright test --pass-with-no-tests"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "eslint": "10.14.0",
+    "htmlhint": "1.9.2",
+    "stylelint": "18.0.0",
+    "stylelint-config-standard": "41.0.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.2",
+    "vite": "8.3.8"
+  }
+}
