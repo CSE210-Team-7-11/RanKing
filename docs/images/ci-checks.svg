@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" role="img" aria-labelledby="title description">
+  <title id="title">Nested CI checks</title>
+  <desc id="description">Main contains all develop checks, and develop contains all backend and frontend trunk checks. The trunks run lint, type checks, and unit tests. Develop adds applicable builds, integration tests, and Chromium. Main adds Firefox, WebKit, and a required coverage gate.</desc>
+  <style>
+    text { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #202020; }
+    .branch { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 23px; font-weight: 650; }
+    .check { font-size: 20px; }
+    .layer { fill: #ffffff; stroke: #303030; stroke-width: 2; }
+  </style>
+  <rect width="800" height="440" fill="#ffffff"/>
+
+  <g aria-label="Main checks include develop">
+    <rect class="layer" x="16" y="16" width="768" height="408" rx="4"/>
+    <text x="40" y="54" class="branch">main</text>
+    <text x="40" y="87" class="check">Firefox and WebKit browser tests</text>
+    <text x="40" y="117" class="check">Test-coverage gate</text>
+
+    <g aria-label="Develop checks include the trunks">
+      <rect class="layer" x="48" y="144" width="704" height="248" rx="4"/>
+      <text x="72" y="182" class="branch">develop</text>
+      <text x="72" y="215" class="check">Applicable builds, integration tests, and Chromium</text>
+
+      <g aria-label="Backend and frontend trunk checks">
+        <rect class="layer" x="80" y="242" width="640" height="118" rx="4"/>
+        <text x="104" y="280" class="branch">backend / frontend</text>
+        <text x="104" y="313" class="check">Lint and type checks</text>
+        <text x="104" y="341" class="check">Unit tests</text>
+      </g>
+    </g>
+  </g>
+</svg>
