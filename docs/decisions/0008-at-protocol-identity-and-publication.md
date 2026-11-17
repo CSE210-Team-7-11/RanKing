@@ -7,7 +7,7 @@ date: 2026-11-16
 
 ## Context and Problem Statement
 
-Players can [choose which scores to publish](../player-flows/play-and-results.md#publication-choice-before-play) to their AT account and delete those copies later. A publication preference or storage cleanup should not alter an already accepted ranking. Direct sharing with a friend must also work without requiring a public AT record.
+Players can [choose which scores to publish](../player-flows/play-and-results.md#publishing-to-at-protocol) to their AT account and delete those copies later. A publication preference or storage cleanup should not alter an already accepted ranking. Direct sharing with a friend must also work without requiring a public AT record.
 
 ## Considered Options
 

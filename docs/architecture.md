@@ -18,4 +18,4 @@ The system needs comparable results for standings and clear control over where s
 
 ## Building and operating the system
 
-Implementing those interfaces requires work across the team before a complete player flow can be tested. [Delivery and verification](architecture/delivery.md) proposes the handoffs and integration sequence for the first ranked game. The [deployment proposal](architecture/deployment.md) considers where that integrated system runs and how its results survive updates or failures. Local setup and commands are in the [README](../README.md).
+Implementing those interfaces requires work across the team before a complete player flow can be tested. [Delivery and verification](architecture/delivery.md) sets out the first-release scope and proposes how to implement and test it, along with possible later releases. The [deployment proposal](architecture/deployment.md) considers where that integrated system runs and how its results survive updates or failures. Local setup and commands are in the [README](../README.md).
