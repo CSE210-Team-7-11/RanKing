@@ -17,6 +17,8 @@ We need a way to determine whether a submitted result can count toward official 
 
 ## Decision Outcome
 
+[ADR-0007](0007-ranked-run-validation.md) [ADR-0030](0030-one-result-per-run.md)
+
 Chosen option: game-provided validation handlers, because the game defines the interactions and scoring rules needed to interpret its evidence. A unified interface can carry submissions and outcomes, but a universal set of gameplay checks cannot capture those rules for every game. Shared anti-cheat checks also cannot establish trusted execution in a player-controlled browser.
 
 Each game defines its evidence format and supplies a handler that returns validated scores or a rejection. Evidence can include behavioral signals or challenge responses used to detect automated play as well as information needed to check the game's rules. RanKing routes the submission to the handler for the run's rules version, records the outcome subject to its run checks, and returns it to the player. Only successfully validated results recorded by RanKing count toward official standings.
@@ -48,5 +50,3 @@ Each game defines its evidence format and supplies a handler that returns valida
 ## More Information
 
 [OWASP's guidance on client-side security](https://cheatsheetseries.owasp.org/cheatsheets/Web_Frontend_Security_Cheat_Sheet.html#dont-rely-on-client-logic-for-security) explains why security decisions cannot rely on code controlled by the user.
-
-[ADR-0007](0007-ranked-run-validation.md) reviews how submissions are tied to issued runs. [ADR-0030](0030-one-result-per-run.md) records the separate rule preventing equivalent retries from creating duplicate results.
