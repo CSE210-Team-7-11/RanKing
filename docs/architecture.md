@@ -2,7 +2,7 @@
 
 RanKing is a social leaderboard platform for comparing scores and sharing the experience of playing with friends and the wider world. Leaderboards give players goals against others, while personal bests give them a way to measure their own progress. A shared result can celebrate an achievement or become a challenge that friends trade back and forth.
 
-This guide explains how the frontend, games, and ranking server support those player experiences.
+This guide explains how the frontend, games, and ranking server support the planned product. Its architecture extends beyond the [MVP scope](decisions/0002-mvp-scope.md), which is Sudoku and one working leaderboard without score validation.
 
 ## Product design
 
@@ -18,4 +18,4 @@ The system needs comparable results for standings and clear control over where s
 
 ## Building and operating the system
 
-Implementing those interfaces requires work across the team before a complete player flow can be tested. [Delivery and verification](architecture/delivery.md) sets out the first-release scope and proposes how to implement and test it, along with possible later releases. The [deployment proposal](architecture/deployment.md) considers where that integrated system runs and how its results survive updates or failures. Local setup and commands are in the [README](../README.md).
+Implementing those interfaces requires work across the team before a complete player flow can be tested. [Integration and verification](architecture/delivery.md) proposes how to connect and test the components, without assigning that work to releases. The [deployment proposal](architecture/deployment.md) considers where that integrated system runs and how its results survive updates or failures. Local setup and commands are in the [README](../README.md).
