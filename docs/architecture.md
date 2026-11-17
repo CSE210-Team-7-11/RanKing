@@ -6,7 +6,7 @@ This guide explains how the frontend, games, and ranking server support those pl
 
 ## Product design
 
-[Purpose and scope](architecture/purpose-and-scope.md) explains the reasons to play and the boundary of the first release. The [player flows](architecture/player-experience.md) describe the agreed experience and its user stories. The [playtest proposals](research/player-playtests.md) describe tasks for evaluating those flows with players as prototypes become available.
+[Purpose and scope](architecture/purpose-and-scope.md) explains the reasons to play and the boundary of the first release. The [user stories](user-stories.md) collect the player and creator goals, and the [player flows](architecture/player-experience.md) describe the agreed experience for those goals. The [playtest proposals](research/player-playtests.md) describe tasks for evaluating those flows with players as prototypes become available.
 
 ## System design
 
