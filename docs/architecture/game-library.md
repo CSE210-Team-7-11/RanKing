@@ -7,19 +7,14 @@ The app launches every game through an iframe host that provides its allowed dep
 We retain and distribute published game builds through infrastructure we control. The host downloads the assets needed for play and exchanges data with the game through its injected interface.
 
 ```mermaid
-flowchart LR
-    BuiltIn["Built-in catalog"] --> Catalog["Game selection"]
-    Source["Submitted build"] --> Vet["Admission review"]
-    Vet --> Store["Store listing"]
-    Store --> Add["Add to Library"]
-    Add --> Library[("Local library")]
-    Library --> Catalog
-    Catalog --> Ready{"Assets ready?"}
-    Ready -->|Yes| FrameRun["Launch game iframe"]
-    Ready -->|No| Download["Download hosted build"]
-    Download -->|Ready| FrameRun
-    FrameRun --> Result["Result screen"]
-    FrameRun -->|Ranked round| Ranked["Ranked submission"]
+flowchart TB
+    BuiltIn["Built-in catalog"] -->|Game metadata| Host["Game host"]
+    Library[("Local Library")] -->|Added game IDs| Host
+    Catalog["Store catalog"] -->|Build metadata| Host
+    Builds["Hosted builds"] -->|Game assets| Host
+    Host -->|Launch config<br/>and dependencies| Frame["Game iframe"]
+    Frame -->|Outcome and<br/>evidence| Host
+    Host -->|Ranked submission| API["Ranking API"]
 ```
 
 ## Game identity and versions
@@ -34,15 +29,15 @@ The [Store flow](../player-flows/store.md#browsing-and-narrowing-the-catalog) de
 
 [ADR-0032](../decisions/0032-host-published-game-builds.md) [ADR-0028](../decisions/0028-update-games-on-online-open.md)
 
-Guests and connected players use the local Library. Guests can download and play games that do not require an account, with account requirements shown in the listing before download. Adding a game creates its Library entry immediately. Library membership and downloading are separate, so the entry remains available even when the game has not been downloaded or a download fails. The Store catalog identifies the published build we retain and distribute, while download status indicates whether the assets needed to play are available. Published versions have fixed contents; updates publish a new version.
+The local Library stores membership independently of downloaded assets and is available without account connection. Adding a game creates its entry immediately; an absent or failed download leaves that entry intact. The catalog supplies account requirements and published-build metadata, while the host tracks local asset availability. Published versions have fixed contents, so an update creates a new build version.
 
-Players can find and organize an added game while its download is pending. Starting play requires the necessary assets, but completing that download does not create or replace Library membership. A partial update leaves any existing installation intact, so a failed replacement cannot destroy the last complete copy.
+The host requires the necessary assets before launch. Completing a download changes installation state without creating or replacing Library membership. A partial update leaves any existing installation intact, so a failed replacement cannot destroy the last complete copy.
 
-On an online open, the host resolves the game's current published build. The author marks critical updates with a checkbox at publication. A critical update must be applied before online play. When the update is non-critical and a complete installed copy is available, the player can defer the download and launch that copy. This avoids making a slow connection prevent play for a routine update.
+On an online open, the host resolves the game's current published build and the author's critical-update classification. It applies critical updates before online play. A deferred non-critical update permits launching a complete installed copy. The [Library flow](../player-flows/library.md#launching-a-game) describes the player's update controls.
 
-When an update proceeds, the host fetches and verifies the replacement. Once it is ready, the host updates the recorded installed version while retaining the game ID and associated history. An older version remains eligible for new ranked submissions for 24 hours after its replacement is published. The platform must support revoking scores made invalid by a game-breaking bug; the ordinary version window leaves valid historical results intact.
+When an update proceeds, the host fetches and verifies the replacement. Once it is ready, the host updates the recorded installed version while retaining the game ID and associated history. The ranking server enforces [version eligibility and score revocation](ranking-and-storage.md#validation-pipeline) independently of the installed build.
 
-If the update check fails, the player can use the installed copy without ranking or other online features, provided the game supports offline play and its required assets are present. The same fallback applies while offline. The next online open checks for updates again. Background downloads and prefetching are optional and enabled by default. The host follows that preference independently of whether the player defers a non-critical update.
+If the update check fails or the browser is offline, the host can launch a complete installed copy of an offline-capable game with ranking and other online features disabled. The next online open checks for updates again. Background downloading and prefetching follow the saved preference, which defaults to enabled. Deferring an update does not change that preference.
 
 The launch path below uses the installed copy when an update is deferred or the game can run offline. **Offline play ready?** requires both game support and a complete local copy of its assets.
 
@@ -67,7 +62,7 @@ flowchart TB
     Offline -->|No| Unavailable["Can't play<br/>offline"]
 ```
 
-When the player removes a game, the app deletes its Library entry and owned package assets while preserving score history.
+Removing a Library entry also deletes its owned package assets and preserves score history.
 
 ## Runtime interface
 
@@ -75,29 +70,25 @@ When the player removes a game, the app deletes its Library entry and owned pack
 
 Once a build is ready to launch, the host loads its entry point in an iframe. The frame handles the player's input and draws its own interface; the host passes in the launch configuration and provides a way to report readiness and the outcome. The game confirms readiness before the host starts the round. The communication mechanism remains open, and the interface does not require all communication to use one channel.
 
-Guest rounds use the same iframe host and initially return unranked scores. The browser temporarily keeps the result and run evidence so a guest can create or connect an account and submit that evidence under the connected account. The result may enter the rankings if validation succeeds.
+Guest rounds use the same iframe interface and initially return unranked scores. The host retains their result and evidence in temporary browser state through account connection, allowing later authenticated submission of the same attempt. The [run lifecycle](event-model.md) covers that submission.
 
 Creator previews and reviewer launches use the same host as player launches so that admission tests the actual integration.
 
 ```mermaid
 sequenceDiagram
-    actor Player
     participant Host as Game host
     participant Frame as Game iframe
+    participant API as Ranking API
 
-    Player->>Host: Open a built-in or added game
     Host->>Frame: Load game in isolation
-    Host->>Frame: Supply launch config and host<br/>interface
+    Host->>Frame: Supply launch config<br/>and host interface
     Frame-->>Host: Confirm readiness
-    Host-->>Player: Show controls and start
-    Player->>Frame: Play
-    Frame-->>Host: Report outcome and ranked evidence<br/>when applicable
-    Host->>Host: Check result belongs to<br/>current launch
-    alt Guest or practice round
-        Host-->>Player: Show unranked result
-    else Ranked round
-        Host-->>Player: Show score and validation status
-        Note over Host: The ranking server decides<br/>official acceptance
+    Host->>Frame: Start round
+    Frame-->>Host: Report outcome and evidence
+    Host->>Host: Check frame and launch
+    opt Ranked round
+        Host->>API: Submit run evidence
+        API-->>Host: Submission outcome
     end
     Host->>Frame: End game session on exit
 ```
@@ -112,27 +103,25 @@ Hosting the builds gives us control over their distribution, but the iframe's se
 
 [ADR-0013](../decisions/0013-scoped-practice-hooks.md)
 
-After a round, the game can report a summary as well as its result. Optional practice hooks use these summaries to recommend an exercise for a difficulty seen in the player's recent attempts. The host stores the summaries and passes compatible ones to the game. The game defines useful summaries and interprets them because it knows which exercises address which mistakes. The host shows the exercise and the game's reason before the player chooses it.
+Games can report a round summary alongside the result. The host stores those summaries and supplies compatible history to an optional practice hook. The game interprets the summaries and returns an exercise with a reason, or no suggestion. Exercise selection and mechanics belong to the game; history access belongs to the host.
 
 ```mermaid
 sequenceDiagram
-    actor Player
     participant Host as Game host
     participant Game as Game
-    Game-->>Host: Report a bounded round summary
-    Host->>Game: Supply compatible summaries for<br/>this game and player
-    alt The game can suggest an exercise
-        Game-->>Host: Return exercise and reason
-        Host-->>Player: Offer the exercise and explain why
-        opt Player chooses the exercise
-            Host->>Game: Launch the exercise in practice<br/>mode
-            Game-->>Host: Report practice result
+    Game-->>Host: Report bounded summary
+    Host->>Game: Supply compatible history
+    alt Exercise available
+        Game-->>Host: Exercise and reason
+        opt Exercise requested
+            Host->>Game: Launch practice<br/>with exercise config
+            Game-->>Host: Practice result
         end
-    else The game has no suggestion
-        Host-->>Player: Offer ordinary practice
+    else No suggestion
+        Game-->>Host: No exercise
     end
 ```
 
 A summary is game-defined and bounded, with enough version information for the host to return compatible history. The host supplies only a limited set for the current player and game. This keeps the game from needing direct access to account-wide storage while leaving interpretation with the component that understands the mechanics.
 
-The hook may return an exercise and a reason, or no suggestion. If the player chooses the exercise, the host passes it back as practice launch configuration. Ordinary practice remains available when history is insufficient, the hook fails, or the game has no hook. The game defines its summary and exercise data. The host enforces compatibility and bounded history access. The [practice flow](../player-flows/play-and-results.md#scoped-practice) covers the player's choice.
+The host passes a requested exercise back to the game as practice launch configuration. Ordinary practice remains available if history is insufficient, the hook fails, or the game has no hook. The [practice flow](../player-flows/play-and-results.md#scoped-practice) covers how suggestions are presented and chosen.

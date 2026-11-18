@@ -22,7 +22,6 @@ sequenceDiagram
     UI->>Game: Supply game inputs and launch<br/>dependencies
     Player->>Game: Play and finish round
     Game-->>UI: Report outcome and evidence
-    UI-->>Player: Show provisional score
     UI->>API: Submit run ID and game evidence
     API->>API: Authenticate caller
     API->>DB: Read run and prior outcome
@@ -59,7 +58,7 @@ For a guest attempt, the browser temporarily retains the result and run evidence
 
 Before ranked play starts, the browser requests a run for the connected player. The server records its issuance time and the game configuration needed for validation, including the rules version. The submitted evidence is evaluated against that recorded context, so a player cannot substitute a different issuance time.
 
-The host launches the game with its configuration and allowed dependencies. The game implements the round and reports the evidence its validator requires. On completion, the host submits the evidence automatically. The player sees a provisional score with **Checking score** while validation runs.
+The host launches the game with its configuration and allowed dependencies. The game implements the round and reports the evidence its validator requires. On completion, the host submits the evidence automatically. The game-reported score remains provisional until the ranking server confirms acceptance.
 
 The server checks the submitting player's identity and ownership of the run, then passes the evidence and recorded context to the game's handler for the assigned rules version. The handler interprets the evidence and returns validated scores or a rejection. The game's validation contract must establish the relationship between its evidence and the issued attempt.
 
