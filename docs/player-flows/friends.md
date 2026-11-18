@@ -21,7 +21,7 @@ flowchart LR
 
 ## Establishing a friendship
 
-> **S13** As a player who started looking for a friend as a guest and has now signed in, I want to continue that search without starting over.
+> **S13** As a guest whose friends use the app, I want to compete with them.
 
 > **S37** As a player who knows someone I want to compete with, I want to find them on RanKing so we can compare scores.
 
@@ -39,7 +39,7 @@ The mockup review requested Friends in place of Following. One-way following wou
 
 [ADR-0014](../decisions/0014-score-sharing-and-challenges.md)
 
-> **S23** As a player with a friend's challenge I haven't tried yet, I want to return to it when I'm ready to play.
+> **S23** As a player with a friend's challenge I haven't tried yet, I want to take it on when I have time.
 
 Opening a friend's entry shows scores they sent, including the game, score, and when it was set. A share with its challenge flag set offers **Beat this score**. An ordinary share displays the score without that action.
 

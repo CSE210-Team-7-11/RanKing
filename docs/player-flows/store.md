@@ -58,9 +58,9 @@ The listing shows the proportion of players who recommend the game and the numbe
 
 ## Adding without interrupting browsing
 
-> **S4** As a player who finds an interesting game, I want to understand what it offers and be able to find it again when I want to play.
+> **S4** As a player who has found an interesting game but has no time to play now, I want to be able to come back to it later.
 
-> **S14** As a player browsing for games to play later, I want to save the ones that interest me and keep looking.
+> **S14** As a player browsing for games to play later, I want to collect a few games I'd like to try.
 
 **Add to Library** creates the game's entry on this browser immediately and confirms success on the listing. Guests can add games to this local Library and download games that support play without an account. Adding does not wait for a download to finish. It then offers **Play** and **Open in Library**, alongside the route back to browsing. **Open in Library** selects the newly added entry rather than making the player find it again.
 

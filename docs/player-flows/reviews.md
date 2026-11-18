@@ -14,7 +14,7 @@ The game identifies the meaningful interaction because it knows its mechanics. T
 
 ## Leaving a recommendation
 
-> **S31** As a player who has tried a game, I want to say whether I recommend it and explain my experience if I choose.
+> **S31** As a player who has tried a game, I want to help other players decide whether they'd enjoy it.
 
 After eligible play or an eligible early exit, **Review game** appears as a secondary action. The player can keep playing and review later from the Store listing. This makes feedback available without inserting a mandatory step into replay.
 

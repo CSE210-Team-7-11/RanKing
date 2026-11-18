@@ -10,7 +10,7 @@ A visitor arriving through a score link already has a game and target in mind. T
 
 ## The landing page
 
-> **S16** As a first-time visitor, I want to understand what I can do with and without an account so I can decide whether to connect one.
+> **S16** As a first-time visitor, I want to understand what the site offers and whether I need an account to try it.
 
 The page introduces score comparison and sharing with friends and the wider world. It explains what visitors can try as guests and what connecting an account enables, so they can decide how to continue.
 
@@ -61,7 +61,7 @@ A player who wants to search beyond Home's suggestions can open the Store and in
 
 ## Entry with a score to beat
 
-> **S7** As a player arriving with a score I want to beat, I want to find the game and try to beat that score.
+> **S7** As a player who has seen someone else's score, I want to see if I can beat it.
 
 A score ID or AT link opens Home with the referenced game and target selected, whether or not the player has connected an account. The player sees the score and who set it. If the game supports play without an account, a guest can try to beat the target with an unranked result. A game requiring an account identifies that requirement before play.
 

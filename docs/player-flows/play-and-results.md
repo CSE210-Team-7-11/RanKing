@@ -48,7 +48,7 @@ The leads' mockup review identified the submission button as an unnecessary step
 
 ## Replaying or practicing
 
-> **S22** As a player who just finished a round, I want to make another attempt without repeating the setup.
+> **S22** As a player who just finished a round, I want to try again right away.
 
 **Play again** starts a fresh round of the same game. An unbeaten target stays selected, including after its rank changes or a weekly board resets. This lets a player keep trying without having to find the original score after each attempt.
 
@@ -72,7 +72,7 @@ An accepted score can be sent to chosen recipients or published publicly. These 
 
 > **S21** As a player with a score I want friends to see, I want to share it with those friends.
 
-> **S10** As a player with a friendly rival, I want to send them a score to beat so we can keep competing on our own time.
+> **S10** As a player with a friendly rival, I want us to keep trying to outscore each other even when we can't play at the same time.
 
 A player who wants someone else to see the result can choose **Share score** once it is validated. The sender previews the result, chooses a friend or group, and can mark it as a challenge. Both intents use the same protocol object for the score and recipients. Its challenge flag enables **Beat this score** for the recipient; an ordinary share displays the score without that action. The same object supports a dedicated **Challenge** action with the flag already set, so the protocol works with either arrangement.
 
@@ -86,7 +86,7 @@ Sending to a friend works independently of public publication. The [Friends flow
 
 > **S12** As a competitor who only wants to share some results publicly, I want to choose which scores I publish.
 
-> **S5** As a player who just set a standout score and hadn't planned to publish it, I want to share that achievement publicly.
+> **S5** As a player who just did much better than expected, I want to share that achievement publicly.
 
 Public publication puts a copy of an eligible result on the player's AT account for their public profile and compatible external apps.
 

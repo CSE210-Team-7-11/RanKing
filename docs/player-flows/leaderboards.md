@@ -28,7 +28,7 @@ Players can switch games and control how much of a board is visible. They must a
 
 [ADR-0015](../decisions/0015-multiple-scores-per-game.md)
 
-> **S24** As a player comparing scores, I want to tell at a glance what each number measures and which score I'm trying to beat.
+> **S24** As a player comparing scores, I want to understand what makes one result better than another.
 
 For a simple score, the unit can carry the explanation. A reaction-time value in **ms** ordinarily needs no extra paragraph about how time is measured. If a game reports several measures, short labels distinguish them: **Clicks/s** and **Accuracy (%)** describe different aspects of an aim-training attempt.
 
@@ -38,7 +38,7 @@ Games can report multiple scores for one round, as agreed in the meeting. Which 
 
 ## Choosing a target
 
-> **S25** As a ranked player, I want to see my place on the board and pick a score to beat in my next round.
+> **S25** As a ranked player, I want to know how I compare with other players and what score I could aim for next.
 
 A player can inspect the leaders or look near their own rank and choose **Beat this score**. The game opens with that result as the target, including who set it and the measure or comparison rule to beat. The ready screen and result must use that same comparison.
 

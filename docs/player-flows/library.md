@@ -6,9 +6,9 @@ The Library holds games added on this browser and is available to guests as well
 
 ## Opening and finding games
 
-> **S32** As a player returning to a game I've added, I want to find it and start playing.
+> **S32** As a player ready to try a game I found earlier, I want to get back to that game.
 
-> **S35** As a player who remembers a game's name, I want to find it in my Library without looking through every entry.
+> **S35** As a player who remembers the name of a game in my Library, I want to find that game quickly.
 
 **All games** shows the whole collection, including games that have not been downloaded, and defaults to **Recently played**. Adding a game creates its entry immediately, with download readiness shown separately. A player arriving through **Open in Library** from the Store goes directly to the new entry. Playable entries offer **Play**; an empty Library offers **Browse Store** so there is a way to begin building the collection.
 
@@ -18,7 +18,7 @@ Title search works across the full Library or within a collection. Players can s
 
 > **S33** As a player with a few go-to games I haven't played recently, I want to find them quickly.
 
-> **S34** As a player with a large Library, I want to find the games I use for a particular activity without looking through the whole collection.
+> **S34** As a player with a large Library, I want to find the games I use for a particular activity.
 
 Favorites serve a different purpose from recent play. Starring a game keeps it accessible in **Favorites**. The player can star or unstar it from its Library entry without maintaining a collection for that purpose.
 

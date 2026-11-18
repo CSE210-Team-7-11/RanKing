@@ -3,46 +3,46 @@
 - **S1** As a visitor, I want to try a game immediately so I can tell whether I enjoy it.
 - **S2** As a competitor who has finished a round, I want my score to count on the leaderboard.
 - **S3** As a returning player, I want to see my best score and how much I have improved over time.
-- **S4** As a player who finds an interesting game, I want to understand what it offers and be able to find it again when I want to play.
-- **S5** As a player who just set a standout score and hadn't planned to publish it, I want to share that achievement publicly.
+- **S4** As a player who has found an interesting game but has no time to play now, I want to be able to come back to it later.
+- **S5** As a player who just did much better than expected, I want to share that achievement publicly.
 - **S6** As a player deciding what to play, I want to find a game that interests me or a score I'd like to beat.
-- **S7** As a player arriving with a score I want to beat, I want to find the game and try to beat that score.
+- **S7** As a player who has seen someone else's score, I want to see if I can beat it.
 - **S8** As a player far behind the all-time leaders, I want to have a fresh opportunity to compete for first place.
 - **S9** As a player with friends on RanKing, I want to compare my scores with theirs so we can compete with each other.
-- **S10** As a player with a friendly rival, I want to send them a score to beat so we can keep competing on our own time.
+- **S10** As a player with a friendly rival, I want us to keep trying to outscore each other even when we can't play at the same time.
 - **S11** As a player who regularly shares results, I want to keep people outside RanKing up to date with how I'm doing.
 - **S12** As a competitor who only wants to share some results publicly, I want to choose which scores I publish.
-- **S13** As a player who started looking for a friend as a guest and has now signed in, I want to continue that search without starting over.
-- **S14** As a player browsing for games to play later, I want to save the ones that interest me and keep looking.
+- **S13** As a guest whose friends use the app, I want to compete with them.
+- **S14** As a player browsing for games to play later, I want to collect a few games I'd like to try.
 - **S15** As a player with games I no longer play, I want to tidy up my Library without losing my past results.
-- **S16** As a first-time visitor, I want to understand what I can do with and without an account so I can decide whether to connect one.
+- **S16** As a first-time visitor, I want to understand what the site offers and whether I need an account to try it.
 - **S17** As a returning player, I want to get back to a familiar game quickly.
 - **S18** As a player who wants a change, I want to discover an unfamiliar game I'd enjoy playing.
 - **S19** As a player starting a round, I want to know when the round starts and see how I did when it ends.
 - **S20** As a player trying to improve, I want to understand where I struggle and practice those parts of the game.
 - **S21** As a player with a score I want friends to see, I want to share it with those friends.
-- **S22** As a player who just finished a round, I want to make another attempt without repeating the setup.
-- **S23** As a player with a friend's challenge I haven't tried yet, I want to return to it when I'm ready to play.
-- **S24** As a player comparing scores, I want to tell at a glance what each number measures and which score I'm trying to beat.
-- **S25** As a ranked player, I want to see my place on the board and pick a score to beat in my next round.
+- **S22** As a player who just finished a round, I want to try again right away.
+- **S23** As a player with a friend's challenge I haven't tried yet, I want to take it on when I have time.
+- **S24** As a player comparing scores, I want to understand what makes one result better than another.
+- **S25** As a ranked player, I want to know how I compare with other players and what score I could aim for next.
 - **S26** As a player who hasn't decided what to play, I want to browse games and see what catches my eye.
 - **S27** As a player with a rough idea of what I want, I want to find games that fit my mood and the time I have.
 - **S28** As a player who knows the type of game and features I want but doesn't know any titles, I want to find games that match.
 - **S29** As a player considering an unfamiliar game, I want to avoid wasting time on a game that doesn't work as advertised.
 - **S30** As a player deciding whether to try a game, I want to hear what people who have played it think of it.
-- **S31** As a player who has tried a game, I want to say whether I recommend it and explain my experience if I choose.
-- **S32** As a player returning to a game I've added, I want to find it and start playing.
+- **S31** As a player who has tried a game, I want to help other players decide whether they'd enjoy it.
+- **S32** As a player ready to try a game I found earlier, I want to get back to that game.
 - **S33** As a player with a few go-to games I haven't played recently, I want to find them quickly.
-- **S34** As a player with a large Library, I want to find the games I use for a particular activity without looking through the whole collection.
-- **S35** As a player who remembers a game's name, I want to find it in my Library without looking through every entry.
+- **S34** As a player with a large Library, I want to find the games I use for a particular activity.
+- **S35** As a player who remembers the name of a game in my Library, I want to find that game quickly.
 - **S36** As a player whose Library game is unavailable, I want to know why I can't play it and what I can do next.
 - **S37** As a player who knows someone I want to compete with, I want to find them on RanKing so we can compare scores.
 - **S38** As a player approached by someone who wants to be friends, I want to know who they are and decide whether we become friends.
-- **S39** As a player interested in someone else's performance, I want to see the achievements they've shared and find a score I'd like to beat.
-- **S40** As a player looking back at past games, I want to find my earlier scores and decide which ones to share.
-- **S41** As a player with a large published score history, I want to reclaim space on my AT account without having to remove each unwanted attempt individually.
+- **S39** As a player interested in someone else's performance, I want to see what they've achieved and whether I could beat their scores.
+- **S40** As a player looking back at past games, I want to revisit results that matter to me.
+- **S41** As a player whose AT account is filling up with old scores, I want to free up space.
 - **S42** As a player with scores I value, I want to clear out old published attempts without losing milestones or records.
-- **S43** As a game creator preparing a release, I want to see how my game will appear and play on RanKing before I make it available.
+- **S43** As a game creator preparing a release, I want to know that my listing is accurate and my game works on RanKing.
 - **S44** As a reviewer, I want to determine whether a submitted game works as advertised and meets the Store's admission standards.
 - **S45** As a game creator asked to make changes, I want to understand what needs fixing so I can get my game ready for publication.
 - **S46** As a game creator, I want to get fixes and improvements to players promptly.

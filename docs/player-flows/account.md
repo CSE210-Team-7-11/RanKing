@@ -6,7 +6,7 @@ A public profile lets someone discover a player's published achievements and fin
 
 ## Visiting a profile
 
-> **S39** As a player interested in someone else's performance, I want to see the achievements they've shared and find a score I'd like to beat.
+> **S39** As a player interested in someone else's performance, I want to see what they've achieved and whether I could beat their scores.
 
 The public profile identifies the player by display name, avatar, AT Protocol handle, and optional bio. **Published scores** groups their public records by game, showing the measure and date needed to interpret each result. A comparable* result offers **Beat this score**.
 
@@ -16,7 +16,7 @@ This list represents the records the player published to their AT account. Offic
 
 > **S3** As a returning player, I want to see my best score and how much I have improved over time.
 
-> **S40** As a player looking back at past games, I want to find my earlier scores and decide which ones to share.
+> **S40** As a player looking back at past games, I want to revisit results that matter to me.
 
 The owner can inspect more than the public profile shows. Private Account identifies the connected account and shows personal bests by game and measure. Opening a game's history gives dated attempts with their score values, units, rules, and ranked or practice status, including unpublished attempts. The view distinguishes comparable results so that an apparent improvement is not simply a change of rules.
 
@@ -26,7 +26,7 @@ Account also contains the automatic publication preference for future rounds. Wi
 
 ## Managing published scores
 
-> **S41** As a player with a large published score history, I want to reclaim space on my AT account without having to remove each unwanted attempt individually.
+> **S41** As a player whose AT account is filling up with old scores, I want to free up space.
 
 > **S42** As a player with scores I value, I want to clear out old published attempts without losing milestones or records.
 

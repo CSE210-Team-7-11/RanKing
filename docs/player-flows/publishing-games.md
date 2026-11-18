@@ -22,7 +22,7 @@ flowchart TB
 
 ### Preparing a submission
 
-> **S43** As a game creator preparing a release, I want to see how my game will appear and play on RanKing before I make it available.
+> **S43** As a game creator preparing a release, I want to know that my listing is accurate and my game works on RanKing.
 
 The creator prepares a playable build and its Store listing, previews the listing, and launches that exact build through the iframe host. Testing in the host matters because a game that runs on its own may still fail when launched with the app's dependencies and isolation.
 
