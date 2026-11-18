@@ -34,3 +34,5 @@ See [TESTING.md](TESTING.md) for running the test suites and adding tests.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for branch management rules, shared interface proposals, and review requirements.
 
 [Decision records](docs/decisions/README.md) explain why we chose the design and development tools.
+
+Outstanding design and tooling questions are collected in [Open questions](docs/open-questions.md). 

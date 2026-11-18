@@ -40,4 +40,4 @@ Build official standings from accepted results stored by RanKing. Public AT reco
 
 Either storage arrangement could support signed public results. Signed attestations are outside the MVP; a reference through which other apps could check acceptance remains a proposal.
 
-The [Account flow](../player-flows/account.md) defines published scores on profiles and the private controls for history and publication. The public-record format and recovery from external edits remain open.
+The [Account flow](../player-flows/account.md) defines published scores on profiles and the private controls for history and publication.

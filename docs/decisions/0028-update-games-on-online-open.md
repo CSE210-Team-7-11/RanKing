@@ -18,17 +18,19 @@ An installed game can fall behind its published build. Players should receive fi
 
 ## Decision Outcome
 
-On online open, check for updates. Critical updates must be applied before online play. A player can defer a non-critical update and launch the installed version, so a slow connection does not force them to spend their play session waiting for an optional download. Otherwise the app handles the update automatically.
+On online open, check for updates. The game author marks an update as critical using a checkbox when publishing it. Critical updates must be applied before online play. A player can defer a non-critical update and launch the installed version, so a slow connection does not force them to spend their play session waiting for an optional download. Otherwise the app handles the update automatically.
 
 The distinction matters because the cost of waiting depends on the player's connection, while the need for a particular fix depends on the update. Requiring every update ignores that cost. Allowing every update to be deferred would also allow a player to skip a fix designated as necessary before further online play.
 
-An offline-capable game can use its installed copy while offline. The next online open checks for updates again. Keeping the installed build does not determine which ranked rules the server still supports; eligibility for ranked play on older versions needs an explicit policy.
+Background downloads and prefetching are optional and enabled by default. Players can disable them to control bandwidth use. Deferring a non-critical update allows play to continue on the installed build; background downloading follows the separate download preference.
+
+An offline-capable game can use its installed copy while offline. The next online open checks for updates again. An older version remains eligible for new ranked submissions for 24 hours after its replacement is published. This window does not remove valid historical scores. If a game-breaking bug produces invalid scores, the platform must support revoking the affected scores so they stop counting in standings.
 
 ### Consequences
 
 - Good, because players on slow or limited connections can continue with an installed game when its update is non-critical.
 - Good, because critical updates still take effect before online play without relying on the player to seek out a fix.
-- Bad, because the platform needs a reliable criticality classification. Over-classification would recreate mandatory waits for routine changes, while under-classification could allow an important fix to be deferred.
+- Bad, because players depend on the author to mark critical updates appropriately. Marking routine changes critical recreates mandatory waits, while leaving a critical fix unmarked allows it to be deferred.
 - Bad, because players can remain on different builds. Game compatibility and ranked eligibility must account for the version actually running.
 
 Every update strategy depends on connectivity to receive a new build. An offline installation cannot be updated or disabled remotely merely by publishing a replacement.
@@ -52,8 +54,4 @@ Every update strategy depends on connectivity to receive a new build. An offline
 
 ## More Information
 
-The criteria for a critical update, who can assign that classification, and how it applies across installed versions remain open. The deferral controls and treatment of older versions in ranked play also need design.
-
-Background downloads and prefetching concern when bytes are transferred, independently of whether an update is required before launch. They can reduce waiting, but also consume limited bandwidth for games the player may not open. No background-download policy is selected here.
-
-The [installation proposal](../architecture/game-library.md#install-and-update-lifecycle) addresses keeping a complete installed copy during replacement. Package distribution, exact failure handling, and offline requirements remain open. The game's identity and score history survive updates.
+The [installation design](../architecture/game-library.md#install-and-update-lifecycle) preserves a complete installed copy during replacement. The game identity and score history survive updates. [Ranking storage](../architecture/ranking-and-storage.md#run-and-result-storage) preserves acceptance history while excluding revoked scores from standings.

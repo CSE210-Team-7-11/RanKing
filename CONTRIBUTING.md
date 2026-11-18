@@ -20,7 +20,7 @@ If your feature needs a new shared interface or a change to an existing one, pro
 
 Merges from either trunk into `develop` require lead review. The leads normally review their own domains, and either can cover when needed. If review requests changes, revise the work on its branch and submit it again.
 
-Promotion from `develop` to `main` requires CI/CD checks, including test coverage.
+Promotion from `develop` to `main` is manual and requires CI/CD checks, including test coverage. Deployment runs automatically from `main`.
 
 ```mermaid
 flowchart TD
@@ -42,8 +42,6 @@ flowchart TD
     Develop --> Checks{"Release checks"}
     Checks -->|Pass| Main["main"]
 ```
-
-The merge paths above define the required reviews. Whether promotion or deployment runs automatically remains undecided.
 
 ### CI checks
 

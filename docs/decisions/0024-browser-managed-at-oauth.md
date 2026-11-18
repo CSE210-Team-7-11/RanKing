@@ -19,7 +19,7 @@ AT Protocol is an assignment requirement. Players connect their existing AT acco
 
 Chosen option: browser-managed AT OAuth, because players can use their existing AT account through the recommended end-user authorization flow, and the RanKing server does not have to manage their AT OAuth credentials. This reduces account setup for players and credential-handling code for the team.
 
-The browser's OAuth client manages the AT credentials outside game frames. Permission requests and the account-connection screens still need design. Requests to RanKing's own ranking API use [AT service-token verification](0023-authenticate-ranked-requests-with-at-tokens.md).
+The browser's OAuth client manages the AT credentials outside game frames. The account-connection flow must preserve the selected game and target through authorization. Requests to RanKing's own ranking API use [AT service-token verification](0023-authenticate-ranked-requests-with-at-tokens.md).
 
 ### Consequences
 

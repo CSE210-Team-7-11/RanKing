@@ -17,7 +17,7 @@ A player might want friends to see a result or ask one of them to beat it. Both 
 
 Use one score-share object with a challenge flag because the result reference and recipient handling are the same for both intents. Set the flag when the sender asks the recipient to beat the score. It changes how the invitation is presented; either value allows the recipient to play against the score and send a better result back.
 
-**Share score** and a dedicated **Challenge** action can both create this object. The protocol choice leaves the number and placement of UI actions to the player-flow design. The [score-share payload](../architecture/identity-and-sharing.md#direct-score-sharing) describes the proposed fields; transport and group delivery remain open.
+**Share score** and a dedicated **Challenge** action can both create this object. The protocol choice leaves the number and placement of UI actions to the player-flow design.
 
 ### Consequences
 

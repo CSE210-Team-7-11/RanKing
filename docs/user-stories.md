@@ -4,7 +4,7 @@
 - **S2** As a competitor, I want to have my ranked results count toward the standings without interrupting my next attempt.
 - **S3** As a returning player, I want to find my personal best and compare dated attempts so I can see my progress under the same rules.
 - **S4** As a player who finds an interesting game, I want to understand what it offers and be able to find it again when I want to play.
-- **S5** As a player who just set a standout score, I want to publish it after seeing the result so I can share an achievement I hadn't planned to post.
+- **S5** As a player who just set a standout score and hadn't planned to publish it, I want to share that achievement publicly.
 - **S6** As a player deciding what to play, I want to find a game that interests me or a score I'd like to beat.
 - **S7** As a player with a score ID or AT link, I want to see that score and keep trying against it so I can beat it.
 - **S8** As a player far behind the all-time leaders, I want to have a fresh opportunity to compete for first place.
@@ -12,7 +12,7 @@
 - **S10** As a player with a friendly rival, I want to send them a score to beat so we can keep competing on our own time.
 - **S11** As a player who regularly shares results, I want to share my scores with people outside RanKing without doing it separately for every result.
 - **S12** As a player who shares selectively, I want to choose which scores I publish to my AT account while continuing to compete in the rankings.
-- **S13** As a guest looking for a friend, I want to continue finding them after signing in without starting over.
+- **S13** As a player who started looking for a friend as a guest and has now signed in, I want to continue that search without starting over.
 - **S14** As a player choosing several games, I want to keep looking without being interrupted each time I save a game for later play.
 - **S15** As a player clearing out my library, I want to remove a game and keep my scores so I can add it again later and pick up where I left off.
 - **S16** As a first-time visitor, I want to understand what I can do with and without an account so I can decide whether to connect one.
@@ -27,12 +27,12 @@
 - **S25** As a ranked player, I want to see my place on the board and pick a score to beat in my next round.
 - **S26** As a player who hasn't decided what to play, I want to browse games and see what catches my eye.
 - **S27** As a player with a rough idea of what I want, I want to find games that fit my mood and the time I have.
-- **S28** As a player who knows the kind of game I want, I want to find games with the gameplay and features I'm looking for, even when I don't know any titles.
+- **S28** As a player who knows the type of game and features I want but doesn't know any titles, I want to find games that match.
 - **S29** As a player considering an unfamiliar game, I want to know it is playable and matches its description before I spend time on it.
 - **S30** As a player deciding whether to try a game, I want to know whether other players enjoyed it and whether their feedback still applies to the game as it is now.
 - **S31** As a player who has tried a game, I want to say whether I recommend it and explain my experience if I choose.
 - **S32** As a player returning to a game I've added, I want to find it and start playing.
-- **S33** As a player with a few go-to games, I want to find them quickly even when I haven't played them recently.
+- **S33** As a player with a few go-to games I haven't played recently, I want to find them quickly.
 - **S34** As a player with a large Library, I want to find the games I use for a particular activity without looking through the whole collection.
 - **S35** As a player who remembers a game's name, I want to find it in my Library without looking through every entry.
 - **S36** As a player whose Library game is unavailable, I want to know why I can't play it and what I can do next.
@@ -47,5 +47,5 @@
 - **S45** As a game creator asked to make changes, I want to understand what needs fixing so I can get my game ready for publication.
 - **S46** As a game creator, I want to get fixes and improvements to players promptly.
 - **S47** As a player, I want to benefit from a game's fixes and improvements without having to maintain it myself.
-- **S48** As a player who has reviewed a game, I want to revise my recommendation or review when my experience changes.
+- **S48** As a player who has previously reviewed a game and whose experience has changed, I want to revise my recommendation or review.
 - **S49** As a player with a slow or limited connection, I want to start a game I already have without a long download using up my time or data.

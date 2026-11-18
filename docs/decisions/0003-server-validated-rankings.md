@@ -21,7 +21,7 @@ We need a way to determine whether a submitted result can count toward official 
 
 Chosen option: game-provided validation handlers, because the game defines the interactions and scoring rules needed to interpret its evidence. A unified interface can carry submissions and outcomes, but a universal set of gameplay checks cannot capture those rules for every game. Shared anti-cheat checks also cannot establish trusted execution in a player-controlled browser.
 
-Each game defines its evidence format and supplies a handler that returns validated scores or a rejection. Evidence can include behavioral signals or challenge responses used to detect automated play as well as information needed to check the game's rules. RanKing routes the submission to the handler for the run's rules version, records the outcome subject to its run checks, and returns it to the player. Only successfully validated results recorded by RanKing count toward official standings.
+Each game defines its evidence format and supplies a handler that returns validated scores or a rejection. Evidence can include behavioral signals or challenge responses used to detect automated play as well as information needed to check the game's rules. RanKing routes the submission to the handler for the run's rules version, records the outcome subject to its run checks, and returns it to the player. Only successfully validated, non-revoked results recorded by RanKing count toward official standings. The platform must support revoking scores made invalid by a game-breaking bug, game modification, cheating, or otherwise.
 
 ### Consequences
 

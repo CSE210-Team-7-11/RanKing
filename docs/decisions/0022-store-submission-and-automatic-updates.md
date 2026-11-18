@@ -20,17 +20,19 @@ Players rely on Store listings to describe playable games accurately. Human revi
 
 Review the initial build and listing for reasonable effort before admitting a game. The reviewer tries the main play flow through RanKing and checks the listing's claims. When changes are needed, the creator receives specific feedback and can revise the same submission.
 
-After admission, republication goes through by default once automated package and host compatibility checks pass. Reports or automatic flags trigger human review of the game or update concerned. This keeps routine publication independent of moderator availability while directing review to identified concerns.
+After admission, republication goes through by default. Reports can trigger human review of the game or update concerned. This keeps routine publication independent of moderator availability while directing review to identified concerns.
+
+Automated package and host-compatibility checks, automatic moderation flags, and the associated moderation tooling are distant stretch goals. They are not prerequisites for the current course work. The review policy can accommodate automatic flags when that capability is implemented.
 
 Requiring approval for selected change categories would still delay updates in those categories. Publisher-based permissions would require a separate trust policy, while routine review of published updates would create work even when no concern has been raised. Reports and flags give us a reason to investigate a particular game without maintaining either system. They can miss problems, so this approach does not establish that every published build has been checked by a person.
 
-Package and compatibility checks determine whether a build meets the publication requirements. A moderation flag calls for human assessment. The handling of flagged builds, including their availability during review, remains to be defined. Delivery of published updates to installed copies follows [ADR-0028](0028-update-games-on-online-open.md).
+Delivery of published updates to installed copies follows [ADR-0028](0028-update-games-on-online-open.md).
 
 ### Consequences
 
 - Good, because the initial review checks the game's playable flow against its listing before admission.
 - Good, because creators can normally publish fixes while moderators are unavailable, and reports or flags still bring problems to human reviewers.
-- Bad, because a problem can reach players before anyone reports or flags it. Automated package and host checks do not repeat a reviewer's assessment of playability or listing accuracy.
+- Bad, because a problem can reach players before anyone reports it. Future automated checks would not replace a reviewer's assessment of playability or listing accuracy.
 - Bad, because reports and flags require handling. False alarms can consume review time, and concerns may remain unresolved while moderators are unavailable.
 
 ## Pros and Cons of the Options
@@ -62,10 +64,10 @@ Review every update or a sample of updates after they are published.
 - Good, because publication normally proceeds without waiting, and reviewers have a specific concern to investigate.
 - Bad, because review depends on concerns being reported or detected. False flags and unreported problems both affect how well this policy works.
 
-These policies can be combined. The chosen policy uses reports and automatic flags as review triggers; routine sampling and publisher-specific publication permissions are not part of this decision.
+These policies can be combined. Reports trigger review under the chosen policy; automatic flags can supplement them as a stretch goal. Routine sampling and publisher-specific publication permissions are not part of this decision.
 
 ## More Information
 
 Valve's [release review process](https://partner.steamgames.com/doc/store/review_process) provides a comparison for reviewing a build and listing before admission, then allowing updates without repeating that review.
 
-The [submission flow](../player-flows/publishing-games.md) covers revisions, republication, and review triggers. The exact automated checks, flag criteria, moderation response, and package distribution remain open.
+The [submission flow](../player-flows/publishing-games.md) covers revisions, republication, and review triggers. Detailed automated checks and flag-based moderation will be designed if those stretch goals are undertaken.

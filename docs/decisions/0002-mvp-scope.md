@@ -16,12 +16,12 @@ The team wants to show that a player can finish a game and have their score coun
 
 ## Decision outcome
 
-Deliver Sudoku and one working leaderboard. Set later milestones for additional features.
+Deliver Sudoku and one working leaderboard. See later milestones for additional features.
 
 ### Consequences
 
-- Good, because one game and one leaderboard give the team a complete player flow to deliver and evaluate before taking on more features. Sudoku exercises the shared [game interface](0017-iframe-game-runtime.md).
-- Bad, because the first release cannot demonstrate the wider social and retention features that motivated the product. Streaks, points and cosmetics, personal history, score distributions, social play, training, and developer-facing APIs remain work for later milestones.
+- Good, because one game and one leaderboard give the team a complete player flow to deliver and evaluate before taking on more features.
+- Bad, because the first release cannot demonstrate the wider social and retention features that motivated the product. Streaks, points and cosmetics, personal history, score distributions, social play, training, and developer-facing APIs are outside this scope; their inclusion in future milestones needs separate agreement.
 
 ## Evidence
 
