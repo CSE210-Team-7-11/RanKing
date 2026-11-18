@@ -18,11 +18,14 @@ Players can [choose which scores to publish](../player-flows/play-and-results.md
 
 Build official standings from accepted results stored by RanKing. Public AT records are copies that players control independently. This lets players change what they publish without changing which validated attempts count toward their standings.
 
+Include a reference to the official result in each published copy. Other apps can use it to check the published score against the result RanKing accepted, since a player-controlled AT record alone cannot establish that acceptance.
+
 ### Consequences
 
 - Good, because deleting a public copy or encountering a publication outage leaves the official result and private attempt history intact.
 - Good, because leaderboard participation and direct sharing do not require public publication.
 - Bad, because we must maintain storage for official results independently of the player's AT records and implement publication failure handling separately from ranked acceptance.
+- Bad, because checking a published score through its official-result reference depends on RanKing being available.
 
 ## Pros and Cons of the Options
 
@@ -38,6 +41,6 @@ Build official standings from accepted results stored by RanKing. Public AT reco
 
 ## More Information
 
-Either storage arrangement could support signed public results. Signed attestations are outside the MVP; a reference through which other apps could check acceptance remains a proposal.
+Signed attestations are outside the MVP. The official-result reference provides a way to check acceptance without requiring them.
 
 The [Account flow](../player-flows/account.md) defines published scores on profiles and the private controls for history and publication.
