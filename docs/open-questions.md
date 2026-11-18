@@ -30,9 +30,7 @@ This list tracks unresolved architecture and tooling decisions affecting the doc
 
 ## Game integration
 
-- **Q26 - Package distribution.** Where should game packages be hosted and served from? Package distribution remains open and affects the game origin and isolation policy. [Installation design](architecture/game-library.md#install-and-update-lifecycle)
-
-- **Q27 - Iframe isolation.** Should packages run from a controlled isolated origin or be loaded from remote sources? What sandbox permissions, network access, and response policies preserve the boundary around app credentials and storage? The iframe runtime itself is agreed. [Runtime isolation](architecture/game-library.md#runtime-interface)
+- **Q27 - Iframe isolation.** What serving origin, sandbox permissions, network access, and response policies preserve the boundary around app credentials and storage? Platform hosting of published builds and the iframe runtime are agreed. [Runtime isolation](architecture/game-library.md#runtime-interface)
 
 - **Q28 - Host-game communication.** How should the host and isolated game communicate? A readiness handshake is agreed; the communication mechanism remains open, without a single-channel requirement. The host must associate messages with the correct launch and reject messages from another frame. [Runtime interface](architecture/game-library.md#runtime-interface)
 

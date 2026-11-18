@@ -25,5 +25,6 @@ The following [Markdown Architectural Decision Records](https://adr.github.io/ma
 | [0028 \| Check for game updates on online open](0028-update-games-on-online-open.md) | Accepted |
 | [0030 \| Return the accepted result for equivalent retries](0030-one-result-per-run.md) | Accepted |
 | [0031 \| Maintain a shared test environment separate from the live app](0031-shared-test-environment.md) | Accepted |
+| [0032 \| Host published game builds](0032-host-published-game-builds.md) | Accepted |
 
 For a new decision, copy [the template](template.md) and mark the number as XXXX.
