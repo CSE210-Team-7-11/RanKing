@@ -18,9 +18,9 @@ This list tracks unresolved architecture and tooling decisions affecting the doc
 
 - **Q17 - Recovery API.** Does recovery need a separate status endpoint, and what response should be returned while validation is in progress? These remain deferred alongside the browser recovery flow. [Status lookup](architecture/ranking-and-storage.md#ranking-api), [in-progress responses](decisions/0030-one-result-per-run.md#more-information)
 
-- **Q18 - Validation handlers.** Where should handlers run and how should the platform invoke them? Handler hosting and invocation still need design. Games retain ownership of their evidence formats and validation logic. [Validation boundary](architecture/ranking-and-storage.md#game-rules-and-validation-boundary)
+- **Q18 - Validation handlers.** Where should handlers run and how should the platform invoke them? Handler hosting and invocation still need design, including the processing load that validation would place on our infrastructure. Games retain ownership of their evidence formats and validation logic. [Validation boundary](architecture/ranking-and-storage.md#game-rules-and-validation-boundary)
 
-- **Q19 - Ties.** Should tied scores share a rank and skip the corresponding places, and how should tied rows be ordered? The ranking document proposes this policy but explicitly leaves it unadopted. [Tie proposal](architecture/ranking-and-storage.md#leaderboard-queries)
+- **Q19 - Ties.** How should tied scores be ranked and ordered? No tie policy has been chosen. [Leaderboard queries](architecture/ranking-and-storage.md#leaderboard-queries)
 
 ## Accounts and sharing
 
@@ -34,7 +34,7 @@ This list tracks unresolved architecture and tooling decisions affecting the doc
 
 - **Q27 - Iframe isolation.** Should packages run from a controlled isolated origin or be loaded from remote sources? What sandbox permissions, network access, and response policies preserve the boundary around app credentials and storage? The iframe runtime itself is agreed. [Runtime isolation](architecture/game-library.md#runtime-interface)
 
-- **Q28 - Host-game communication.** What communication mechanism should connect the host and isolated game? The host must associate messages with the correct launch and reject messages from another frame. [Runtime interface](architecture/game-library.md#runtime-interface)
+- **Q28 - Host-game communication.** How should the host and isolated game communicate? A readiness handshake is agreed; the communication mechanism remains open, without a single-channel requirement. The host must associate messages with the correct launch and reject messages from another frame. [Runtime interface](architecture/game-library.md#runtime-interface)
 
 ## Store and reviews
 
