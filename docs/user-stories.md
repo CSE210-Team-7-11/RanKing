@@ -49,3 +49,5 @@
 - **S47** As a player, I want to benefit from a game's fixes and improvements without having to maintain it myself.
 - **S48** As a player who has previously reviewed a game and whose experience has changed, I want to revise my recommendation or review.
 - **S49** As a player with a slow or limited connection, I want to start a game I already have without a long download using up my time or data.
+- **S50** As a guest who just earned an unexpectedly good score, I want to save it so I can find it again later.
+- **S51** As a guest who just earned a competitive score, I want to enter it in the rankings.

@@ -40,6 +40,6 @@ This list tracks unresolved architecture and tooling decisions affecting the doc
 
 ## Stored history and evidence
 
-- **Q12 - Private history.** Where should dated attempts be stored, how long should they be retained, and how should deletion affect personal bests and practice summaries? Public AT-record deletion already preserves private history. [Account history](player-flows/account.md#reviewing-personal-progress)
+- **Q12 - History retention and deletion.** How long should dated attempts be retained, and how should deletion affect personal bests and practice summaries? Public AT-record deletion already preserves private history. [Account history](player-flows/account.md#reviewing-personal-progress)
 
 - **Q40 - Stored evidence.** What retention and account-deletion policies apply to accepted-run evidence, including data that must outlive an attempt? Revoking scores made invalid by a game-breaking bug is agreed. Individual games decide what evidence their validation requires. [Retention questions](architecture/ranking-and-storage.md#run-and-result-storage)

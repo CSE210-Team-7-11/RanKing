@@ -47,7 +47,7 @@ flowchart TD
 
 [ADR-0027](docs/decisions/0027-browser-checks-by-branch.md)
 
-Each branch runs the checks enclosed within its layer. `develop` includes the trunk checks, and `main` includes all of `develop`’s checks.
+Each branch runs the checks enclosed within its layer. `develop` includes the trunk checks, and `main` includes all of `develop`'s checks.
 
 ![Main encloses develop, which encloses the backend and frontend trunk checks.](docs/images/ci-checks.svg)
 

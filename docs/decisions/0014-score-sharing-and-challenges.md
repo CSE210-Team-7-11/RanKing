@@ -6,7 +6,7 @@ status: accepted
 
 ## Context and Problem Statement
 
-A player might want friends to see a result or ask one of them to beat it. Both involve sending a score to chosen recipients, who can use it as a target in either case. The protocol needs to carry the sender's intent while supporting the same exchange of results.
+A player might want friends to see a result or ask one of them to beat it. Both involve sending a score to chosen recipients. The protocol needs to carry the sender's intent while supporting the same exchange of results.
 
 ## Considered Options
 
@@ -15,7 +15,7 @@ A player might want friends to see a result or ask one of them to beat it. Both 
 
 ## Decision Outcome
 
-Use one score-share object with a challenge flag because the result reference and recipient handling are the same for both intents. Set the flag when the sender asks the recipient to beat the score. It changes how the invitation is presented; either value allows the recipient to play against the score and send a better result back.
+Use one score-share object with a challenge flag because the result reference and recipient handling are the same for both intents. Set the flag when the sender asks the recipient to beat the score. The recipient sees **Beat this score** when the flag is set. An ordinary share displays the result without that action.
 
 **Share score** and a dedicated **Challenge** action can both create this object. The protocol choice leaves the number and placement of UI actions to the player-flow design.
 

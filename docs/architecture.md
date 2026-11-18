@@ -18,4 +18,4 @@ The system needs comparable results for standings and clear control over where s
 
 ## Building and operating the system
 
-Implementing those interfaces requires work across the team before a complete player flow can be tested. [Integration and verification](architecture/delivery.md) describes the shared interfaces and behavior the team needs to preserve as it implements the app. [Deployment](architecture/deployment.md) records the test and live environments and our responsibility for distributing games. Local setup and commands are in the [README](../README.md).
+Contributors define shared frontend/backend interfaces through the [review process](../CONTRIBUTING.md#adding-or-changing-a-shared-interface) before implementing dependent features. The [README](../README.md#local-development) and [test guide](../TESTING.md) cover local setup and checks. [Deployment](architecture/deployment.md) describes the shared test environment, the live app, and game distribution.

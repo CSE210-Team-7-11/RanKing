@@ -52,6 +52,6 @@ The submission endpoint reports that the run is already complete and provides a 
 
 ## More Information
 
-The [run lifecycle](../architecture/event-model.md) describes acceptance, rejection, and confirmation after a lost response. Request identifiers and synchronous or asynchronous validation are separate design choices; either processing model can return an accepted result for equivalent retries. In-progress responses and browser recovery remain deferred.
+The [run lifecycle](../architecture/event-model.md) describes acceptance, rejection, and confirmation after a lost response. Request identifiers and synchronous or asynchronous validation are separate design choices; either processing model can return an accepted result for equivalent retries.
 
 Run issuance and evidence binding are separately under review in [ADR-0007](0007-ranked-run-validation.md).

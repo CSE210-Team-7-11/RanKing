@@ -21,7 +21,7 @@ We work asynchronously across frontend and backend. Each area needs somewhere to
 
 [ADR-0027](0027-browser-checks-by-branch.md)
 
-Use `frontend` and `backend` as the two development trunks. Declare shared interfaces on a separate branch and merge them directly into `develop` after team agreement and lead review. This bypasses the trunk path so both areas can use the agreed declarations before implementing the features that depend on them. During feature implementation, those declarations stay fixed. Frontend work stays in the frontend code and backend work stays in the backend code, so the two trunks can develop independently without routinely editing the same files. The shared-interface branch's name has not been chosen.
+Use `frontend` and `backend` as the two development trunks. Declare shared interfaces on a separate branch and merge them directly into `develop` after team agreement and lead review. This bypasses the trunk path so both areas can use the agreed declarations before implementing the features that depend on them. During feature implementation, those declarations stay fixed. Frontend work stays in the frontend code and backend work stays in the backend code, so the two trunks can develop independently without routinely editing the same files.
 
 Feature PRs target the relevant trunk and require team review. Work from each trunk requires lead review before merging into `develop`. The leads normally review their own domains, and either can cover when needed. Rejected work returns to its branch for revision. The direct path for shared interface declarations requires both team agreement and lead review.
 

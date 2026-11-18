@@ -20,7 +20,9 @@ The server can recover the issued values from its stored record. A signed copy w
 
 [ADR-0003](0003-server-validated-rankings.md)
 
-Run issuance before ranked play is agreed. The server records the issuance time and the run's owner, along with the game configuration needed for validation. Whether to require a signed copy of the issued values is undecided.
+Run issuance before ranked play is agreed. For play started by a connected player, the server records the issuance time and the run's owner, along with the game configuration needed for validation. Whether to require a signed copy of the issued values is undecided.
+
+Guest run evidence is retained temporarily in the browser and submitted under the player's account once it is connected. Successful validation makes that completed result eligible for ranking.
 
 The game-provided handler must determine whether the submitted evidence satisfies that run's validation contract. Where the game supports it, a server-assigned challenge can make the evidence depend on the particular issued attempt. The platform supplies the recorded context, and the game defines and checks the relationship. Merely labeling evidence with a run ID does not establish how it was produced.
 
