@@ -38,7 +38,7 @@ With Chromium installed, `npm test` runs the unit and integration suites followe
 | `tests/integration/` | Integration tests, named `*.test.ts` | Node |
 | `tests/browser/` | Browser tests | Playwright |
 
-Work with QA on the tests for your feature. QA owns test implementation and accessibility checks, collaborating with frontend and backend implementers. The [integration and verification proposal](docs/architecture/delivery.md#verification) describes the proposed application coverage.
+Work with QA on the tests for your feature. QA owns test implementation and accessibility checks, collaborating with frontend and backend implementers. The [integration requirements](docs/architecture/delivery.md#verification) describe the behavior application tests need to verify.
 
 ## CI results
 

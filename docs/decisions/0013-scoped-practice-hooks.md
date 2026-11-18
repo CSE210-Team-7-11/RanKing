@@ -38,4 +38,4 @@ RanKing retains the summaries games choose to report and supplies a bounded set 
 
 ## More Information
 
-Ordinary practice is available in either arrangement and remains the fallback when there is no useful suggestion. The [practice flow](../player-flows/play-and-results.md#replaying-or-practicing) describes the player's choice, and the [hook proposal](../architecture/game-library.md#scoped-practice-hooks) describes compatible history access and the game-defined summaries.
+Ordinary practice is available in either arrangement and remains the fallback when there is no useful suggestion. The [practice flow](../player-flows/play-and-results.md#replaying-or-practicing) describes the player's choice, and the [practice integration](../architecture/game-library.md#scoped-practice-hooks) describes compatible history access and the game-defined summaries.

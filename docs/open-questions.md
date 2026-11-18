@@ -12,7 +12,7 @@ This list tracks unresolved architecture and tooling decisions affecting the doc
 
 - **Q14 - Submission recovery.** Should completed runs be retained locally for automatic retry, and how should the browser recover confirmation of the server outcome? A missing response is not a rejection. [Lost-response case](architecture/event-model.md#acceptance-with-a-lost-response)
 
-- **Q15 - Run expiry.** When should runs expire, and how should eligibility work for a completed submission that arrives late? The expiry policy is explicitly unresolved in the proposed lifecycle. [Run completion](architecture/event-model.md#completing-the-run)
+- **Q15 - Run expiry.** When should runs expire, and how should eligibility work for a completed submission that arrives late? The expiry policy remains unresolved. [Run completion](architecture/event-model.md#completing-the-run)
 
 - **Q16 - Equivalent submissions.** What counts as equivalent evidence when confirming an accepted submission? Returning the accepted result for an equivalent retry is agreed; the definition of equivalence remains open. [ADR-0030](decisions/0030-one-result-per-run.md#more-information)
 
@@ -42,4 +42,4 @@ This list tracks unresolved architecture and tooling decisions affecting the doc
 
 - **Q12 - Private history.** Where should dated attempts be stored, how long should they be retained, and how should deletion affect personal bests and practice summaries? Public AT-record deletion already preserves private history. [Account history](player-flows/account.md#reviewing-personal-progress)
 
-- **Q40 - Stored evidence.** What retention and account-deletion policies apply to evidence, including data that must outlive an attempt? Revoking scores made invalid by a game-breaking bug is agreed. Individual games decide what evidence their validation requires. [Retention questions](architecture/ranking-and-storage.md#run-and-result-storage)
+- **Q40 - Stored evidence.** What retention and account-deletion policies apply to accepted-run evidence, including data that must outlive an attempt? Revoking scores made invalid by a game-breaking bug is agreed. Individual games decide what evidence their validation requires. [Retention questions](architecture/ranking-and-storage.md#run-and-result-storage)

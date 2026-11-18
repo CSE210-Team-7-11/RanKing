@@ -51,6 +51,6 @@ The host supplies the game's allowed dependencies through an explicit interface.
 
 ## More Information
 
-The [runtime proposal](../architecture/game-library.md#runtime-interface) leaves message transport, serving origin, sandbox permissions, and the exact injected interface open. Those choices determine the isolation the host can actually provide and require review before implementation.
+The [runtime design](../architecture/game-library.md#runtime-interface) leaves message transport, serving origin, sandbox permissions, and the exact injected interface open. Those choices determine the isolation the host can actually provide and require review before implementation.
 
 The [HTML standard](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-sandbox) defines iframe sandbox controls and fullscreen permissions, including configurations that defeat isolation. [Cross-window messaging](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) supports communication across origins. [Shadow DOM encapsulation](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM) does not supply an equivalent security boundary for directly loaded game code.
