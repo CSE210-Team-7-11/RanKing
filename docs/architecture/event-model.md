@@ -52,7 +52,7 @@ sequenceDiagram
     end
 ```
 
-For a guest attempt, the browser temporarily retains the result and run evidence. If the player chooses to enter the rankings, it keeps that evidence through account creation or connection and submits it under the connected account. The result can then enter the rankings after successful validation.
+For a guest attempt, the browser temporarily retains the result and run evidence. If the player chooses to enter the rankings, the browser keeps that evidence through account creation or connection and submits it under the connected account. The result can then enter the rankings after successful validation.
 
 ## Issuing and submitting a run
 

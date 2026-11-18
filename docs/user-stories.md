@@ -14,7 +14,7 @@
 - **S12** As a competitor who only wants to share some results publicly, I want to choose which scores I publish.
 - **S13** As a player who started looking for a friend as a guest and has now signed in, I want to continue that search without starting over.
 - **S14** As a player browsing for games to play later, I want to save the ones that interest me and keep looking.
-- **S15** As a player clearing out my library, I want to remove a game and keep my scores so I can add it again later and pick up where I left off.
+- **S15** As a player with games I no longer play, I want to tidy up my Library without losing my past results.
 - **S16** As a first-time visitor, I want to understand what I can do with and without an account so I can decide whether to connect one.
 - **S17** As a returning player, I want to get back to a familiar game quickly.
 - **S18** As a player who wants a change, I want to discover an unfamiliar game I'd enjoy playing.
