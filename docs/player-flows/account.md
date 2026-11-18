@@ -1,6 +1,6 @@
 # Account and public profiles
 
-[Player flows](../architecture/player-experience.md)
+[Player flows](README.md)
 
 A public profile lets someone discover a player's published achievements and find a score to beat. Account lets the owner inspect their own attempts and manage publication. This flow covers both views and the owner's controls for deleting old public copies while keeping valued scores.
 

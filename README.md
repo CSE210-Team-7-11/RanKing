@@ -2,7 +2,7 @@
 
 RanKing is a social leaderboard platform where players share game results and experiences with friends and the wider world. Players can compete for all-time records or the best score in a period, challenge friends, work toward a personal best, or simply test their skill at a game. Public score sharing uses AT Protocol.
 
-The [design and architecture guide](docs/architecture.md) explains the planned experience and how the parts of the system support it. To contribute, set up the local development tools below so you can preview and check your changes before review.
+The [design and architecture guide](docs/architecture/README.md) explains the planned experience and how the parts of the system support it. To contribute, set up the local development tools below so you can preview and check your changes before review.
 
 ## Local development
 

@@ -1,6 +1,6 @@
 # Landing page and Home
 
-[Player flows](../architecture/player-experience.md)
+[Player flows](README.md)
 
 The landing page explains what RanKing offers and why someone might want to use it. Home brings standings and personal bests together with playable games so guests and connected players can choose their next attempt.
 

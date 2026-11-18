@@ -1,6 +1,6 @@
 # Friends and received scores
 
-[Player flows](../architecture/player-experience.md)
+[Player flows](README.md)
 
 Friends gives players a smaller group to compete with and a place to return to scores sent by people they know. A received score may interest the player now or later. Keeping it under its sender lets the player find it by the person they remember, without requiring a live conversation or a separate match session.
 
