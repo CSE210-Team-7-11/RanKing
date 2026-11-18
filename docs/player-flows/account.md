@@ -14,9 +14,9 @@ This list represents the records the player published to their AT account. Offic
 
 ## Reviewing personal progress
 
-> **S3** As a returning player, I want to find my personal best and compare dated attempts so I can see my progress under the same rules.
+> **S3** As a returning player, I want to see my best score and how much I have improved over time.
 
-> **S40** As a player, I want to review my attempts and control public sharing for the account I'm using.
+> **S40** As a player looking back at past games, I want to find my earlier scores and decide which ones to share.
 
 The owner can inspect more than the public profile shows. Private Account identifies the connected account and shows personal bests by game and measure. Opening a game's history gives dated attempts with their score values, units, rules, and ranked or practice status, including unpublished attempts. The view distinguishes comparable results so that an apparent improvement is not simply a change of rules.
 

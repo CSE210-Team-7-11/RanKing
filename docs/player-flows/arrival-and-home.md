@@ -61,7 +61,7 @@ A player who wants to search beyond Home's suggestions can open the Store and in
 
 ## Entry with a score to beat
 
-> **S7** As a player with a score ID or AT link, I want to see that score and keep trying against it so I can beat it.
+> **S7** As a player arriving with a score I want to beat, I want to find the game and try to beat that score.
 
 A score ID or AT link opens Home with the referenced game and target selected, whether or not the player has connected an account. The player sees the score and who set it. If the game supports play without an account, a guest can try to beat the target with an unranked result. A game requiring an account identifies that requirement before play.
 

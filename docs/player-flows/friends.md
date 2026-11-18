@@ -39,7 +39,7 @@ The mockup review requested Friends in place of Following. One-way following wou
 
 [ADR-0014](../decisions/0014-score-sharing-and-challenges.md)
 
-> **S23** As a player who received a score from a friend, I want to find that score when I'm ready to try beating it.
+> **S23** As a player with a friend's challenge I haven't tried yet, I want to return to it when I'm ready to play.
 
 Opening a friend's entry shows scores they sent, including the game, score, and when it was set. A share with its challenge flag set offers **Beat this score**. An ordinary share displays the score without that action.
 
