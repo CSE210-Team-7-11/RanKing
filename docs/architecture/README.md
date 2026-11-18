@@ -4,6 +4,8 @@ RanKing is a social leaderboard platform for comparing scores and sharing the ex
 
 This guide records the agreed design for how the frontend, games, and ranking server support the planned product. Unresolved decisions are collected in [Open questions](../open-questions.md). Its architecture extends beyond the [MVP scope](../decisions/0002-mvp-scope.md), which is Sudoku and one working leaderboard without score validation.
 
+[Reading the diagrams](../diagrams.md) explains the notation used throughout these documents.
+
 ## Product design
 
 [Purpose and scope](purpose-and-scope.md) explains the reasons to play and the boundary of the first release. The [user stories](../user-stories.md) collect the player and creator goals, and the [player flows](../player-flows/README.md) describe the agreed experience for those goals. The [playtest proposals](../research/player-playtests.md) describe tasks for evaluating those flows with players as prototypes become available.
