@@ -25,7 +25,7 @@ Use `frontend` and `backend` as the two development trunks. Declare shared inter
 
 Feature PRs target the relevant trunk and require team review. Work from each trunk requires lead review before merging into `develop`. The leads normally review their own domains, and either can cover when needed. Rejected work returns to its branch for revision. The direct path for shared interface declarations requires both team agreement and lead review.
 
-CI/CD, including test coverage, gates promotion from `develop` to `main`. Lead review takes place before the merge into `develop`, with no additional lead-approval gate at promotion. The coverage tool and acceptance criteria still need to be selected. A demo tag identifies the exact revision verified for that demo. Promotion is manual. Deployment runs automatically from `main`.
+CI/CD, including test coverage, gates promotion from `develop` to `main`. Lead review takes place before the merge into `develop`, with no additional lead-approval gate at promotion. The coverage tool and acceptance criteria still need to be selected. Promotion is manual. Deployment runs automatically from `main`.
 
 ### Consequences
 

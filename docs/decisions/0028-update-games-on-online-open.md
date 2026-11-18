@@ -24,7 +24,7 @@ The distinction matters because the cost of waiting depends on the player's conn
 
 Background downloads and prefetching are optional and enabled by default. Players can disable them to control bandwidth use. Deferring a non-critical update allows play to continue on the installed build; background downloading follows the separate download preference.
 
-An offline-capable game can use its installed copy while offline. The next online open checks for updates again. An older version remains eligible for new ranked submissions for 24 hours after its replacement is published. This window does not remove valid historical scores. If a game-breaking bug produces invalid scores, the platform must support revoking the affected scores so they stop counting in standings.
+If checking for an update fails, an offline-capable game can still use its installed copy without ranking or other online features. This also applies while the player is offline. The next online open checks for updates again. An older version remains eligible for new ranked submissions for 24 hours after its replacement is published. This window does not remove valid historical scores. If a game-breaking bug produces invalid scores, the platform must support revoking the affected scores so they stop counting in standings.
 
 ### Consequences
 
