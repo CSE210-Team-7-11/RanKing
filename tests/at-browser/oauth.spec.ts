@@ -10,7 +10,7 @@ for (const name of ['Alice', 'Bob']) {
     const account = config.accounts.find(account => account.handle === `${name.toLowerCase()}.test`)!;
     await page.getByRole('button', { name, exact: true }).click();
     await expect(page.getByLabel('Username or Email')).toHaveValue(account.handle);
-    await page.getByLabel('Password', { exact: true }).fill('ranking-local-test-password');
+    await page.getByLabel('Password', { exact: true }).fill('password');
     await page.getByRole('button', { name: 'Sign in', exact: true }).click();
     await page.getByRole('button', { name: 'Authorize', exact: true }).click();
     await expect(page.locator('#result')).toHaveAttribute('data-state', 'verified');
@@ -37,7 +37,7 @@ test('local HTTP login still requires the provider CSRF token', async ({ request
       'sec-fetch-mode': 'same-origin', 'sec-fetch-site': 'same-origin',
       origin: account.pds, referer: `${account.pds}/account`,
     },
-    data: { identifier: account.handle, password: 'ranking-local-test-password', remember: false },
+    data: { identifier: account.handle, password: 'password', remember: false },
   });
   expect(response.status()).toBe(400);
   expect(await response.json()).toMatchObject({ error_description: 'Missing CSRF header' });

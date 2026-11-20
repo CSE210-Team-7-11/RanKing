@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { randomBytes } from 'node:crypto';
 import { listenLocalPds } from './local-http.ts';
 
-export const testPassword = 'ranking-local-test-password';
+export const testPassword = 'password';
 export const testAudience = 'did:web:ranking.test#ranking_test';
 export const testMethod = 'app.ranking.test.check';
 

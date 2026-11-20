@@ -10,7 +10,7 @@ Run the unit tests with:
 npm run test:unit
 ```
 
-Unit and integration tests use Node's test runner. Use `npm run test:integration` for integration tests or `npm run test:node` for both suites. The AT integration tests start local services and remove their accounts and data when they finish.
+Use `npm run test:integration` to run integration tests, or `npm run test:node` to run both suites. Tests that need local AT services start and stop their own copies.
 
 ## Browser tests
 
@@ -30,15 +30,17 @@ npm run test:e2e:desktop
 npm run test:at:desktop
 ```
 
-With Chromium installed, `npm test` runs all Node suites and both Chromium suites.
+Once Chromium is installed, `npm test` runs the unit and integration tests followed by both browser suites in Chromium.
 
 ## Adding tests
 
 Work with QA on the tests for your feature. QA owns test implementation and accessibility checks, collaborating with frontend and backend implementers.
 
-Place unit tests in `tests/unit/` and integration tests in `tests/integration/`, using the filename suffix `.test.ts`. Both run with Node's test runner.
+Place unit tests in `tests/unit/` and integration tests in `tests/integration/`, using the filename suffix `.test.ts`.
 
-Application browser tests belong in `tests/browser/` and use Playwright. Tests for local AT authentication belong in `tests/at-browser/`; `playwright.at.config.ts` starts the AT services and the test page for that suite. Its page source is in `tests/fixtures/at-client/`.
+Use Playwright for browser tests. Put application tests in `tests/browser/` and local AT authentication tests in `tests/at-browser/`.
+
+When working on AT authentication tests, use `playwright.at.config.ts` to configure service startup. The test page is in `tests/fixtures/at-client/`.
 
 ## Failed CI checks
 

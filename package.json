@@ -8,8 +8,11 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:server": "npm run db:setup && node --watch --env-file-if-exists=.env src/server/index.ts",
+    "db:setup": "node --env-file-if-exists=.env scripts/dev/prepare-database.ts",
+    "db:reset": "node --env-file-if-exists=.env scripts/dev/prepare-database.ts --reset",
     "dev:services": "node scripts/dev/run.ts",
-    "dev:local": "node --env-file-if-exists=.env scripts/dev/run.ts --app",
+    "dev:local": "npm run db:setup && node --env-file-if-exists=.env scripts/dev/run.ts --app",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit && npm run typecheck:web && tsc -p tests/fixtures/at-client/tsconfig.json",
     "typecheck:web": "tsc --project web/tsconfig.json",

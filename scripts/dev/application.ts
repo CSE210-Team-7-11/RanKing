@@ -38,7 +38,7 @@ export async function stopChild(child: ChildProcess): Promise<void> {
  * Returns the preview URL and close() to stop both processes
  */
 export async function startApplication(entry: string, onExit: (error: Error) => void) {
-  const frontend = await createServer({ root: resolve(root, 'web'), server: { host: '127.0.0.1', port: 5173, strictPort: true } });
+  const frontend = await createServer({ configFile: resolve(root, 'vite.config.ts'), root: resolve(root, 'web') });
   try { await frontend.listen(); } catch (error) { await frontend.close(); throw error; }
   const child = spawn(process.execPath, ['--watch', '--env-file-if-exists=.env', entry], {
     cwd: root,
