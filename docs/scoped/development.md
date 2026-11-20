@@ -5,6 +5,7 @@
 Choose the repository task you are doing:
 
 - Local setup or commands: [Local development](../../README.md#local-development) and the [toolchain reference](../architecture/development-toolchain.md).
+- Starting services and using development accounts: [Local setup](../development/local-environment.md).
 - Branching or review: [Feature work](../../CONTRIBUTING.md#feature-work) and [Integration and release](../../CONTRIBUTING.md#integration-and-release).
 - Shared frontend/backend declarations: [Adding or changing a shared interface](../../CONTRIBUTING.md#adding-or-changing-a-shared-interface).
 - Adding or running tests: [TESTING.md](../../TESTING.md).

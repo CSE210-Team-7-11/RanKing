@@ -10,7 +10,7 @@ export default defineConfig(
     extends: [tseslint.configs.recommended],
   },
   {
-    files: ['src/**/*.ts'],
+    files: ['src/**/*.ts', 'scripts/**/*.ts'],
     extends: [tseslint.configs.recommendedTypeCheckedOnly],
     languageOptions: {
       parserOptions: {

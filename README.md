@@ -19,6 +19,8 @@ npm run check
 
 `npm run dev` previews the frontend in `web/` and updates it when source files change. Vite compiles frontend TypeScript to JavaScript; type checking runs separately.
 
+Follow the [local setup instructions](docs/development/local-environment.md) to start the services and use the development accounts.
+
 | Command | Purpose |
 | --- | --- |
 | `npm run check` | Check TypeScript types and lint TypeScript, HTML, and CSS |
