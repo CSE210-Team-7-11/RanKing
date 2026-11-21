@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Main | RanKing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span>RanKing</span>
+            <!-- remove the width and height attributes from the images and set them in CSS instead -->
+            <!-- get real images for the buttons and replace the placeholder images with them -->
+            <a href="main.html"><img src=".\images\crown.jpg" width="100" alt="main"></a>
+            <a href="library.html"><img src=".\images\controller.jpg" width="100" alt="Library"></a>
+            <a href="store.html"><img src=".\images\storefront.jpg" width="100" alt="store"></a>
+            <a href="account.html"><img src=".\images\pfp.jpg" width="100" alt="Account"></a>
+            <label for="username">User:</label>
+            <input type="text" id="username">
+        </nav>
+    </header>
+    <main>
+        <section id="Game">
+            <!-- remove the height and width attributes from the iframe and set them in CSS instead -->
+            <!-- get a real game for the iframe and replace the placeholder with it -->
+            <iframe id="gameFrame" title="Sudoku" src="about:blank" width="50%" height="500" frameborder="1"></iframe>
+        </section>
+        <section id="ranks">
+            <!-- remove the height and width attributes from the table and set them in CSS instead -->
+            <table border="1" width="300" height="500">
+                <caption>Leaderboard</caption>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <a href="https://github.com/CSE210-Team-7-11/RanKing" target="_blank">GitHub Repo</a>
+        <a href="mailto:team711@example.com">Contact Us</a>
+        <a> Team 7/11</a>
+    </footer>
+</body>
+
+</html>
