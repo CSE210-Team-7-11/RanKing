@@ -6,7 +6,7 @@ For feature work, use [Documentation by task](docs/scoped/README.md) to find the
 
 ## Local development
 
-Frontend sources belong under `web/`; TypeScript server sources belong under `src/server/`.
+Frontend sources belong under `web/` and TypeScript server sources under `src/server/`.
 
 The [toolchain reference](docs/architecture/development-toolchain.md) describes the tools used in this repository.
 
@@ -17,7 +17,9 @@ npm ci
 npm run check
 ```
 
-`npm run dev` previews the frontend in `web/` and updates it when source files change. Vite compiles frontend TypeScript to JavaScript; type checking runs separately.
+`npm run dev` previews the frontend in `web/` and updates it when source files change. Vite compiles frontend TypeScript to JavaScript for the preview. Run `npm run check` to check types as well.
+
+Follow the [local setup instructions](docs/development/local-environment.md) to start the services and use the development accounts.
 
 | Command | Purpose |
 | --- | --- |
