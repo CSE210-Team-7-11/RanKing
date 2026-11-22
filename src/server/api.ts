@@ -32,7 +32,10 @@ export function sendJson(response: ServerResponse, status: number, value: unknow
 export function adaptEndpoint(handler: EndpointHandler): RequestListener {
   async function respond(request: IncomingMessage, response: ServerResponse): Promise<void> {
     try {
-      const url = new URL(request.url ?? '/', 'http://localhost');
+      const target = request.url ?? '/';
+      const baseUrl = 'http://localhost';
+      // A leading double slash is part of an HTTP path, even though URL resolution treats it as a host.
+      const url = new URL(target.startsWith('/') ? baseUrl + target : target, baseUrl);
       const { status, value } = await handler(request, url);
       sendJson(response, status, value);
     } catch (error) {

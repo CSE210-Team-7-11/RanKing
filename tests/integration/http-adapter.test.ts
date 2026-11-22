@@ -11,6 +11,19 @@ const echoEndpoint: EndpointHandler = async (request, url) => {
   return { status: 200, value: { label: url.searchParams.get('label') } };
 };
 
+test('server routes by pathname without treating a double slash as a host', async t => {
+  const app = await startServer({ host: '127.0.0.1', port: 0 });
+  t.after(() => app.close());
+
+  const health = await fetch(`${app.url}/api/health?probe=1`);
+  assert.equal(health.status, 200);
+  assert.deepEqual(await health.json(), { status: 'ok' });
+
+  const unmatched = await fetch(`${app.url}//other/api/health`);
+  assert.equal(unmatched.status, 404);
+  assert.deepEqual(await unmatched.json(), { error: 'Not found' });
+});
+
 test('adapter reads query parameters and JSON and sends the endpoint status', async t => {
   const app = await startServer({ host: '127.0.0.1', port: 0 }, echoEndpoint);
   t.after(() => app.close());
