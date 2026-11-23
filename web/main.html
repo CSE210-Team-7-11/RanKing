@@ -2,34 +2,32 @@
 <html lang="en">
 
 <head>
-    <title>Main | RanKing</title>
+    <title>Home | RanKing</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/iconify-icon@3/dist/iconify-icon.min.js"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <span>RanKing</span>
-            <!-- remove the width and height attributes from the images and set them in CSS instead -->
-            <!-- get real images for the buttons and replace the placeholder images with them -->
-            <a href="main.html"><img src=".\images\crown.jpg" width="100" alt="main"></a>
-            <a href="library.html"><img src=".\images\controller.jpg" width="100" alt="Library"></a>
-            <a href="store.html"><img src=".\images\storefront.jpg" width="100" alt="store"></a>
-            <a href="account.html"><img src=".\images\pfp.jpg" width="100" alt="Account"></a>
+            <a href="main.html" aria-label="Home"><iconify-icon icon="mdi:crown" aria-hidden="true"></iconify-icon></a>
+            <a href="library.html" aria-label="Library"><iconify-icon icon="mdi:bookshelf" aria-hidden="true"></iconify-icon></a>
+            <a href="games.html" aria-label="Games"><iconify-icon icon="mdi:gamepad-variant" aria-hidden="true"></iconify-icon></a>
+            <a href="store.html" aria-label="Store"><iconify-icon icon="mdi:storefront" aria-hidden="true"></iconify-icon></a>
+            <a href="account.html" aria-label="Account"><iconify-icon icon="mdi:account-circle" aria-hidden="true"></iconify-icon></a>
             <label for="username">User:</label>
             <input type="text" id="username">
         </nav>
     </header>
     <main>
-        <section id="Game">
-            <!-- remove the height and width attributes from the iframe and set them in CSS instead -->
-            <!-- get a real game for the iframe and replace the placeholder with it -->
-            <iframe id="gameFrame" title="Sudoku" src="about:blank" width="50%" height="500" frameborder="1"></iframe>
+        <section id="game-container">
+            <iframe id="game-frame" title="Sudoku" src="./sudoku.html"></iframe>
         </section>
-        <section id="ranks">
-            <!-- remove the height and width attributes from the table and set them in CSS instead -->
-            <table border="1" width="300" height="500">
+        <section id="leaderboard">
+            <table aria-label="Leaderboard table">
                 <caption>Leaderboard</caption>
                 <thead>
                     <tr>
@@ -44,11 +42,12 @@
                 </tbody>
             </table>
         </section>
+        <noscript>You need to enable JavaScript to play this game.</noscript>
     </main>
     <footer>
-        <a href="https://github.com/CSE210-Team-7-11/RanKing" target="_blank">GitHub Repo</a>
-        <a href="mailto:team711@example.com">Contact Us</a>
-        <a> Team 7/11</a>
+        <a href="https://github.com/CSE210-Team-7-11/RanKing" target="_blank" aria-label="Github Repo Redirect">GitHub Repo</a>
+        <a href="mailto:team711@example.com" aria-label="Contact Us redirect">Contact Us</a>
+        <span>&copy; Team 7/11 2026</span>
     </footer>
 </body>
 
