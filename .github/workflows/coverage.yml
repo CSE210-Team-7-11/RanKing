@@ -1,0 +1,47 @@
+name: Backend coverage
+
+on:
+  push:
+    branches: [backend, develop, main]
+  pull_request:
+    branches: [backend, develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: coverage-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  coverage:
+    name: Backend Node test coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run test:coverage
+      - name: Save coverage reports
+        if: ${{ !cancelled() && hashFiles('coverage/lcov.info') != '' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: backend-coverage
+          path: coverage/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload to Codecov
+        if: ${{ vars.CODECOV_ENABLED == 'true' }}
+        uses: codecov/codecov-action@v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/lcov.info
+          disable_search: true
+          fail_ci_if_error: true
