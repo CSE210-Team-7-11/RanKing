@@ -32,6 +32,22 @@ npm run test:at:desktop
 
 Once Chromium is installed, `npm test` runs the unit and integration tests followed by both browser suites in Chromium.
 
+## Backend coverage
+
+Run `npm run test:coverage` to execute the unit and integration tests with coverage
+collection. Open `coverage/index.html` for the annotated source report. The same
+run writes `coverage/lcov.info` for Codecov and `coverage/coverage-summary.json`
+for a machine-readable summary.
+
+The report includes all `src/server/**/*.ts` files, including source files that
+the tests never load. Declaration files, development scripts, test fixtures, and
+browser-side code are outside this backend report. Playwright pass counts are
+reported separately and do not contribute browser code coverage here.
+
+Coverage is informational while the team establishes a baseline. Passing tests
+and high coverage still require comparison against the issue's acceptance
+criteria. See [QA tooling](docs/development/qa-tooling.md) for CI and service setup.
+
 ## Adding tests
 
 Work with QA on the tests for your feature. QA owns test implementation and accessibility checks, collaborating with frontend and backend implementers.
