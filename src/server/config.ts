@@ -6,5 +6,6 @@ export function readConfig(env: NodeJS.ProcessEnv = process.env) {
   return {
     host: env.HOST || '127.0.0.1',
     port,
+    databasePath: env.DATABASE_PATH || '.local/ranking.sqlite',
   };
 }
