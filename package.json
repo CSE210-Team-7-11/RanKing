@@ -32,7 +32,7 @@
     "test:e2e:desktop": "playwright test --pass-with-no-tests",
     "test:at:browser": "playwright test -c playwright.at.config.ts --project=chromium",
     "test:at:desktop": "playwright test -c playwright.at.config.ts",
-    "test:coverage": "c8 node --test \"tests/unit/**/*.test.ts\" \"tests/integration/**/*.test.ts\""
+    "test:coverage": "node scripts/coverage.ts"
   },
   "devDependencies": {
     "@atproto/crypto": "0.5.8",
@@ -57,9 +57,6 @@
     "all": true,
     "include": [
       "src/server/**/*.ts"
-    ],
-    "exclude": [
-      "**/*.d.ts"
     ],
     "extension": [
       ".ts"

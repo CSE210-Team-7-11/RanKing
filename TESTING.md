@@ -39,10 +39,10 @@ collection. Open `coverage/index.html` for the annotated source report. The same
 run writes `coverage/lcov.info` for Codecov and `coverage/coverage-summary.json`
 for a machine-readable summary.
 
-The report includes all `src/server/**/*.ts` files, including source files that
-the tests never load. Declaration files, development scripts, test fixtures, and
-browser-side code are outside this backend report. Playwright pass counts are
-reported separately and do not contribute browser code coverage here.
+Backend modules with runtime code count even when the tests never load them.
+Declaration files and modules containing only TypeScript types are excluded.
+For an early feature review, run the same command locally. Automatic coverage
+starts on pull requests targeting `develop` and continues on `main`.
 
 Coverage is informational while the team establishes a baseline. Passing tests
 and high coverage still require comparison against the issue's acceptance
