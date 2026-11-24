@@ -4,8 +4,8 @@ nav {
     gap: 1rem;
 }
 
-nav label {
-    margin-left: auto;
+nav span {
+    margin-right: auto;
 }
 
 main {
@@ -14,7 +14,7 @@ main {
 }
 
 #game-section {
-    flex: 1;
+    flex: 3;
 }
 
 #game-frame {
