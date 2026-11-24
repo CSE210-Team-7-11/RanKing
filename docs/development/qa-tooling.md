@@ -9,23 +9,18 @@ observed result, expected result, and reproduction steps.
 
 ## Backend coverage
 
-`npm run test:coverage` uses c8 and Node's existing test runner. It runs the unit
-and integration tests and reports all backend TypeScript source files, including
-unloaded files at zero coverage. It writes text, HTML, LCOV, and JSON reports under
-`coverage/`. This adds no coverage threshold and leaves existing test commands
-unchanged.
+`npm run test:coverage` runs the existing Node unit and integration suites with
+c8 and writes text, HTML, LCOV, and JSON reports under `coverage/`. It includes
+runtime modules in `src/server/**/*.ts`, even at zero coverage. The coverage
+runner excludes declaration files and files whose TypeScript output is empty
+or contains only an empty module marker. Adding runtime code to a type-only
+file brings it into the report automatically. Browser tests are tracked separately.
 
-The Backend coverage workflow runs on PRs and pushes to `backend`, `develop`, and
-`main`. This adds integration-test execution to backend PRs in that workflow;
-the original Checks workflow keeps its existing branch gates. Browser tests and
-frontend coverage remain separate. A backend report does not demonstrate a full
-game-to-leaderboard flow.
-
-The report scope is `src/server/**/*.ts`, excluding declaration files. Test
-fixtures, development scripts, and browser sources are not part of this number.
-Keep the scope consistent when comparing branches. Type-only files have no
-runtime behavior; inspect the annotated source and branch coverage alongside the
-percentage.
+Coverage runs automatically on pushes and PRs targeting `develop` and `main`.
+The existing Checks workflow runs lint, type checks, and unit tests on the
+`backend` and `frontend` trunks. To check coverage earlier, run the command
+locally or select the branch in the manual GitHub Actions workflow once the
+workflow is on the default branch.
 
 CI saves the reports as the `backend-coverage` artifact. A repository owner can
 enable Codecov uploads after the service is authorized:
