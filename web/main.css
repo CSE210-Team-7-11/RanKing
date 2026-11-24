@@ -1,0 +1,44 @@
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav span {
+    margin-right: auto;
+}
+
+main {
+    display: flex;
+    gap: 2rem;
+}
+
+#game-section {
+    flex: 3;
+}
+
+#game-frame {
+    width: 100%;
+    height: 500px;
+    border: 1px solid;
+}
+
+#leaderboard-section {
+    flex: 1;
+    height: 500px;
+    border: 1px solid;
+}
+
+#leaderboard-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#leaderboard-section thead {
+    border-bottom: 1px solid;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+}

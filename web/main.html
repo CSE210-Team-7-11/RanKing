@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Main | RanKing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span>RanKing</span>
+            <!-- get real images for the buttons and replace the placeholder images with them -->
+            <a href="main.html"><img src=".\images\WithiconsChromeCrown.png" width="50" alt="main"></a>
+            <a href="library.html"><img src=".\images\WithiconsChromeGamepad.png" width="50" alt="Library"></a>
+            <a href="store.html"><img src=".\images\WithiconsChromeStore.png" width="50" alt="store"></a>
+            <a href="account.html"><img src=".\images\WithiconsChromeUser.png" width="50" alt="Account"></a>
+            <label for="username">User:</label>
+            <input type="text" id="username">
+        </nav>
+    </header>
+    <main>
+        <section id="game-section">
+            <!-- get a real game for the iframe and replace the placeholder with it -->
+            <iframe id="game-frame" title="Sudoku" src="about:blank"></iframe>
+        </section>
+        <section id="leaderboard-section">
+            <table>
+                <caption>Leaderboard</caption>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <a href="https://github.com/CSE210-Team-7-11/RanKing" target="_blank">GitHub Repo</a>
+        <a href="mailto:team711@example.com">Contact Us</a>
+        <a> Team 7/11</a>
+    </footer>
+</body>
+</html>
