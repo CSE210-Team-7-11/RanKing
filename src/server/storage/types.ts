@@ -1,33 +1,40 @@
-export interface User {
-  id: number; // Server-assigned incrementing integer
-  username: string;
-  profilePicture: string | null; // Profile picture color (later to be replaced with image URI)
-}
+import type { LeaderboardEntry, LeaderboardQuery, Score, User } from '../../shared/scores.ts';
 
-export interface Score {
-  userId: User['id'];
-  value: number;
-  submittedAt: string; // Server-assigned UTC ISO 8601 timestamp
-  gameId: string;
-  gameInfo: string; // Game-specific information. For sudoku, YYYY-MM-DD saying which puzzle was played
-}
+export type {
+  LeaderboardEntry,
+  LeaderboardQuery,
+  LeaderboardResponse,
+  Score,
+  User,
+} from '../../shared/scores.ts';
 
-export interface LeaderboardQuery {
-  gameId: Score['gameId'];
-  gameInfo: Score['gameInfo'];
-  start: number; // Inclusive, zero-based
-  end: number; // Exclusive
-}
-
-export type LeaderboardEntry = Score & { user: User };
-export type LeaderboardResponse = LeaderboardEntry[];
-
-// Negative: a ranks ahead of b; positive: b ranks ahead of a; zero: tied
+/**
+ * Compare scores in leaderboard order
+ *
+ * @returns A negative value when a ranks ahead of b, a positive value when b ranks ahead,
+ * or zero for a tie
+ */
 export type ScoreComparator = (a: Score, b: Score) => number;
 
 export interface ScoreStorage {
+  /** Create a user and return their assigned ID */
   createUser(user: Omit<User, 'id'>): Promise<User['id']>;
+
+  /**
+   * Look up a user by ID
+   *
+   * @returns The stored user, or null if the ID is unknown
+   */
   getUser(id: User['id']): Promise<User | null>;
+
+  /** Save one attempt, retaining earlier attempts by the same player */
   saveScore(score: Score): Promise<void>;
+
+  /**
+   * Read standings for one game instance
+   *
+   * @returns The requested page of each player's best score and user details, ordered by the
+   * game's comparator. Empty pages return an empty array. Ties may appear in any order
+   */
   getLeaderboard(query: LeaderboardQuery): Promise<LeaderboardEntry[]>;
 }
