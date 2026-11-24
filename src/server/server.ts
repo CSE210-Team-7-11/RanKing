@@ -7,20 +7,18 @@ export interface ServerOptions {
   port: number;
 }
 
-const handleRequest: EndpointHandler = (request, url) => {
-  if (request.method === 'GET' && url.pathname === '/api/health') {
-    return { status: 200, value: { status: 'ok' } };
-  }
-  return { status: 404, value: { error: 'Not found' } };
-};
-
 /**
  * Start the app server
  * Use port 0 to choose a free port in tests
  * Returns the server URL and close() to stop it
  */
-export async function startServer(options: ServerOptions, endpoint: EndpointHandler = handleRequest) {
-  const listener = adaptEndpoint(endpoint);
+export async function startServer(options: ServerOptions, endpoint?: EndpointHandler) {
+  const listener = adaptEndpoint((request, url) => {
+    if (request.method === 'GET' && url.pathname === '/api/health') {
+      return { status: 200, value: { status: 'ok' } };
+    }
+    return endpoint ? endpoint(request, url) : { status: 404, value: { error: 'Not found' } };
+  });
   const server = createServer((request, response) => {
     response.setHeader('cache-control', 'no-store');
     listener(request, response);
