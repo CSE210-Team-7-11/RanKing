@@ -5,13 +5,13 @@
     <title>Main | RanKing</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <header>
         <nav>
             <span>RanKing</span>
-            <!-- remove the width and height attributes from the images and set them in CSS instead -->
             <!-- get real images for the buttons and replace the placeholder images with them -->
             <a href="main.html"><img src=".\images\WithiconsChromeCrown.png" width="50" alt="main"></a>
             <a href="library.html"><img src=".\images\WithiconsChromeGamepad.png" width="50" alt="Library"></a>
@@ -23,13 +23,11 @@
     </header>
     <main>
         <section id="game-section">
-            <!-- remove the height and width attributes from the iframe and set them in CSS instead -->
             <!-- get a real game for the iframe and replace the placeholder with it -->
-            <iframe id="game-frame" title="Sudoku" src="about:blank" width="50%" height="500" frameborder="1"></iframe>
+            <iframe id="game-frame" title="Sudoku" src="about:blank"></iframe>
         </section>
         <section id="leaderboard-section">
-            <!-- remove the height and width attributes from the table and set them in CSS instead -->
-            <table border="1" width="300" height="500">
+            <table>
                 <caption>Leaderboard</caption>
                 <thead>
                     <tr>
