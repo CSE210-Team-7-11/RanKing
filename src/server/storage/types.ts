@@ -1,10 +1,12 @@
-import type { LeaderboardEntry, LeaderboardQuery, Score, User } from '../../shared/scores.ts';
+import type { LeaderboardEntry, LeaderboardQuery, NewScore, Score, ScoreId, User } from '../../shared/scores.ts';
 
 export type {
   LeaderboardEntry,
   LeaderboardQuery,
   LeaderboardResponse,
+  NewScore,
   Score,
+  ScoreId,
   User,
 } from '../../shared/scores.ts';
 
@@ -27,8 +29,8 @@ export interface ScoreStorage {
    */
   getUser(id: User['id']): Promise<User | null>;
 
-  /** Save one attempt, retaining earlier attempts by the same player */
-  saveScore(score: Score): Promise<void>;
+  /** Save one attempt and return its assigned score ID, retaining earlier attempts */
+  saveScore(score: NewScore): Promise<ScoreId>;
 
   /**
    * Read standings for one game instance

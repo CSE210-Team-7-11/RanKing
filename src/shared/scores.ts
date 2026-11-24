@@ -1,3 +1,8 @@
+import type { GameId } from './games.ts';
+import type { PaginationQuery } from './pagination.ts';
+
+export type { GameId } from './games.ts';
+
 export interface User {
   /** Server-assigned incrementing ID */
   id: number;
@@ -7,30 +12,37 @@ export interface User {
   profilePicture: string | null;
 }
 
+/** Game instance used to group scores. */
+export type GameInfo = string;
+
+/** Game-defined score measure, such as accuracy or clicks per second */
+export type ScoreType = string;
+
+/** Server-assigned integer identifying a stored score */
+export type ScoreId = number;
+
 /** A submitted game attempt */
 export interface Score {
+  sid: ScoreId;
   userId: User['id'];
+  type: ScoreType;
 
   /** Score in units defined by the game */
   value: number;
 
   /** Server-assigned submission time in UTC ISO 8601 format */
   submittedAt: string;
-  gameId: string;
-
-  /** Game instance used to group scores. Sudoku uses its puzzle date, formatted as YYYY-MM-DD */
-  gameInfo: string;
+  gameId: GameId;
+  gameInfo: GameInfo;
 }
 
-export interface LeaderboardQuery {
-  gameId: Score['gameId'];
-  gameInfo: Score['gameInfo'];
+/** Attempt ready for storage, before the server assigns its score ID */
+export type NewScore = Omit<Score, 'sid'>;
 
-  /** Index of the first entry to return, zero-based and inclusive */
-  start: number;
-
-  /** Index at which to stop, exclusive */
-  end: number;
+export interface LeaderboardQuery extends PaginationQuery {
+  gameId: GameId;
+  gameInfo: GameInfo;
+  type: ScoreType;
 }
 
 export type LeaderboardEntry = Score & { user: User };
