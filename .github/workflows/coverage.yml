@@ -2,9 +2,9 @@ name: Backend coverage
 
 on:
   push:
-    branches: [backend, develop, main]
+    branches: [develop, main]
   pull_request:
-    branches: [backend, develop, main]
+    branches: [develop, main]
   workflow_dispatch:
 
 permissions:
