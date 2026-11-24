@@ -1,10 +1,17 @@
 import { readConfig } from './config.ts';
+import { comparators } from './games.ts';
+import { createApiHandler } from './routes.ts';
 import { startServer } from './server.ts';
+import { SqliteScoreStorage } from './storage/sqlite.ts';
 
 try {
-  const app = await startServer(readConfig());
+  const config = readConfig();
+  const storage = new SqliteScoreStorage(config.databasePath, comparators);
+  const app = await startServer(config, createApiHandler(storage));
   const stop = () => {
-    void app.close().catch(error => { console.error(error); process.exitCode = 1; });
+    app.close()
+      .then(() => storage.close())
+      .catch(error => { console.error(error); process.exitCode = 1; });
   };
   process.on('SIGINT', stop);
   process.on('SIGTERM', stop);
