@@ -2,9 +2,9 @@ name: Checks
 
 on:
   push:
-    branches: [backend, frontend, develop, main]
+    branches: [backend, frontend, chore, develop, main]
   pull_request:
-    branches: [backend, frontend, develop, main]
+    branches: [backend, frontend, chore, develop, main]
   workflow_dispatch:
 
 permissions:
