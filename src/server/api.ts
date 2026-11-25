@@ -4,6 +4,7 @@ import { text } from 'node:stream/consumers';
 interface EndpointResult {
   status: number;
   value: unknown;
+  headers?: Record<string, string>;
 }
 
 export type EndpointHandler = (
@@ -22,10 +23,14 @@ export async function readJsonBody(request: IncomingMessage): Promise<unknown> {
   }
 }
 
-export function sendJson(response: ServerResponse, status: number, value: unknown): void {
+export function sendJson(
+  response: ServerResponse,
+  status: number,
+  value: unknown,
+  headers?: Record<string, string>,
+): void {
   const body = JSON.stringify(value) ?? 'null';
-  response.statusCode = status;
-  response.setHeader('content-type', 'application/json');
+  response.writeHead(status, { ...headers, 'content-type': 'application/json' });
   response.end(body);
 }
 
@@ -36,8 +41,8 @@ export function adaptEndpoint(handler: EndpointHandler): RequestListener {
       const baseUrl = 'http://localhost';
       // A leading double slash is part of an HTTP path, even though URL resolution treats it as a host.
       const url = new URL(target.startsWith('/') ? baseUrl + target : target, baseUrl);
-      const { status, value } = await handler(request, url);
-      sendJson(response, status, value);
+      const { status, value, headers } = await handler(request, url);
+      sendJson(response, status, value, headers);
     } catch (error) {
       if (response.destroyed) return;
       if (response.headersSent) {

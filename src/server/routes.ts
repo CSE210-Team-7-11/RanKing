@@ -1,30 +1,37 @@
+import type { Game } from '../shared/games.ts';
+import type { SubmitScoreBody, UserListResponse } from '../shared/http-api.ts';
+import type { PaginationQuery } from '../shared/pagination.ts';
 import { readJsonBody, type EndpointHandler } from './api.ts';
 import { comparators } from './games.ts';
-import type { Score, ScoreStorage } from './storage/types.ts';
+import type { NewScore, ScoreStorage } from './storage/types.ts';
 
-// Provisional paths for the MVP until the frontend contract is agreed.
-const scorePath = '/api/scores';
-const leaderboardPath = '/api/leaderboard';
+const scorePath = /^\/api\/v1\/scores\/([^/]+)\/([^/]+)$/;
+const gamePath = /^\/api\/v1\/games\/([^/]+)$/;
+const sudoku: Game = { id: 'sudoku', uri: '/sudoku.html' };
 
-function isValidGameInfo(gameId: string, gameInfo: unknown): gameInfo is string {
-  if (typeof gameInfo !== 'string' || gameInfo.trim() === '') return false;
-  if (gameId !== 'sudoku') return true;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(gameInfo)) return false;
-  const timestamp = Date.parse(gameInfo);
-  return Number.isFinite(timestamp) && new Date(timestamp).toISOString().slice(0, 10) === gameInfo;
+type ApiStorage = Pick<ScoreStorage, 'getUser' | 'saveScore' | 'getLeaderboard'> & {
+  listUsers(page: PaginationQuery): Promise<UserListResponse>;
+};
+
+function decodePathSegment(segment: string): string | null {
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    return null;
+  }
 }
 
-function parseScore(body: unknown): Omit<Score, 'submittedAt'> | null {
+function parseScoreBody(body: unknown): SubmitScoreBody | null {
   if (body === null || typeof body !== 'object' || Array.isArray(body)) return null;
-  const { userId, value, gameId, gameInfo } = body as Record<string, unknown>;
+  const { userId, value, gameInfo } = body as Record<string, unknown>;
   if (
     typeof userId !== 'number' || !Number.isSafeInteger(userId) || userId < 1 ||
-    typeof value !== 'number' || !Number.isFinite(value) || value < 0 ||
-    typeof gameId !== 'string' || !comparators.has(gameId) || !isValidGameInfo(gameId, gameInfo)
+    typeof value !== 'number' || !Number.isFinite(value) ||
+    typeof gameInfo !== 'string'
   ) {
     return null;
   }
-  return { userId, value, gameId, gameInfo };
+  return { userId, value, gameInfo };
 }
 
 function parsePageIndex(value: string | null): number | null {
@@ -33,33 +40,61 @@ function parsePageIndex(value: string | null): number | null {
   return Number.isSafeInteger(index) ? index : null;
 }
 
-export function createApiHandler(storage: ScoreStorage): EndpointHandler {
+function parsePagination(params: URLSearchParams): PaginationQuery | null {
+  const start = parsePageIndex(params.get('start'));
+  const end = parsePageIndex(params.get('end'));
+  return start === null || end === null || start > end ? null : { start, end };
+}
+
+const invalidPage = { status: 400, value: { error: 'Expected whole numbers with 0 <= start <= end' } };
+
+export function createApiHandler(storage: ApiStorage): EndpointHandler {
   return async (request, url) => {
-    if (request.method === 'POST' && url.pathname === scorePath) {
-      const attempt = parseScore(await readJsonBody(request));
-      if (attempt === null) {
-        return { status: 400, value: { error: 'Invalid score submission' } };
-      }
-      if (await storage.getUser(attempt.userId) === null) {
-        return { status: 404, value: { error: 'User not found' } };
-      }
-      const score = { ...attempt, submittedAt: new Date().toISOString() };
-      await storage.saveScore(score);
-      return { status: 201, value: score };
+    if (request.method === 'GET' && url.pathname === '/api/v1/users') {
+      const page = parsePagination(url.searchParams);
+      return page === null ? invalidPage : { status: 200, value: await storage.listUsers(page) };
     }
 
-    if (request.method === 'GET' && url.pathname === leaderboardPath) {
-      const gameId = url.searchParams.get('gameId');
+    const [, gameSegment] = gamePath.exec(url.pathname) ?? [];
+    if (request.method === 'GET' && gameSegment) {
+      const gameId = decodePathSegment(gameSegment);
+      if (gameId === null) return { status: 400, value: { error: 'Invalid game ID' } };
+      if (gameId === sudoku.id) return { status: 200, value: sudoku };
+      return { status: 404, value: { error: 'Game not found' } };
+    }
+
+    const [, scoreGameSegment, typeSegment] = scorePath.exec(url.pathname) ?? [];
+    if (scoreGameSegment && typeSegment && (request.method === 'GET' || request.method === 'POST')) {
+      const gameId = decodePathSegment(scoreGameSegment);
+      const type = decodePathSegment(typeSegment);
+      if (gameId === null || !comparators.has(gameId) || type === null) {
+        return { status: 400, value: { error: 'Invalid game or score type' } };
+      }
+
+      if (request.method === 'POST') {
+        const attempt = parseScoreBody(await readJsonBody(request));
+        if (attempt === null) {
+          return { status: 400, value: { error: 'Invalid score submission' } };
+        }
+        if (await storage.getUser(attempt.userId) === null) {
+          return { status: 404, value: { error: 'User not found' } };
+        }
+        const score: NewScore = { ...attempt, gameId, type, submittedAt: new Date().toISOString() };
+        const sid = await storage.saveScore(score);
+        return {
+          status: 201,
+          headers: { location: `/api/v1/scores?sid=${sid}` },
+          value: { ...score, sid },
+        };
+      }
+
       const gameInfo = url.searchParams.get('gameInfo');
-      if (gameId === null || !comparators.has(gameId) || !isValidGameInfo(gameId, gameInfo)) {
-        return { status: 400, value: { error: 'Invalid leaderboard game or puzzle' } };
+      if (gameInfo === null) {
+        return { status: 400, value: { error: 'Missing leaderboard gameInfo' } };
       }
-      const start = parsePageIndex(url.searchParams.get('start'));
-      const end = parsePageIndex(url.searchParams.get('end'));
-      if (start === null || end === null || start > end) {
-        return { status: 400, value: { error: 'Expected whole numbers with 0 <= start <= end' } };
-      }
-      const entries = await storage.getLeaderboard({ gameId, gameInfo, start, end });
+      const page = parsePagination(url.searchParams);
+      if (page === null) return invalidPage;
+      const entries = await storage.getLeaderboard({ gameId, type, gameInfo, ...page });
       return { status: 200, value: entries };
     }
 
