@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/require-await --
    node:sqlite is synchronous; async keeps the ScoreStorage contract and turns SQLite errors into rejections */
 import { DatabaseSync, type StatementSync } from 'node:sqlite';
-import type { LeaderboardEntry, LeaderboardQuery, Score, ScoreComparator, ScoreStorage, User } from './types.ts';
+import type { PaginationQuery } from '../../shared/pagination.ts';
+import type {
+  LeaderboardEntry, LeaderboardQuery, NewScore, Score, ScoreComparator, ScoreId, ScoreStorage, User,
+} from './types.ts';
 
 type BoardRow = Score & Omit<User, 'id'>;
 
@@ -17,15 +20,16 @@ const schema = `
   ) STRICT;
 
   CREATE TABLE IF NOT EXISTS scores (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL REFERENCES users (id),
+    type TEXT NOT NULL,
     value REAL NOT NULL,
     submitted_at TEXT NOT NULL,
     game_id TEXT NOT NULL,
     game_info TEXT NOT NULL
   ) STRICT;
 
-  CREATE INDEX IF NOT EXISTS scores_by_board ON scores (game_id, game_info);
+  CREATE INDEX IF NOT EXISTS scores_by_board ON scores (game_id, game_info, type);
 `;
 
 /**
@@ -37,6 +41,7 @@ export class SqliteScoreStorage implements ScoreStorage {
   readonly #comparators: ReadonlyMap<string, ScoreComparator>;
   readonly #insertUser: StatementSync;
   readonly #selectUser: StatementSync;
+  readonly #selectUsers: StatementSync;
   readonly #insertScore: StatementSync;
   readonly #selectBoard: StatementSync;
 
@@ -51,14 +56,18 @@ export class SqliteScoreStorage implements ScoreStorage {
     this.#selectUser = this.#database.prepare(
       'SELECT id, username, profile_picture AS profilePicture FROM users WHERE id = ?',
     );
-    this.#insertScore = this.#database.prepare(
-      'INSERT INTO scores (user_id, value, submitted_at, game_id, game_info) VALUES (?, ?, ?, ?, ?)',
+    this.#selectUsers = this.#database.prepare(
+      'SELECT id, username, profile_picture AS profilePicture FROM users ORDER BY id LIMIT ? OFFSET ?',
     );
+    this.#insertScore = this.#database.prepare(`
+      INSERT INTO scores (user_id, type, value, submitted_at, game_id, game_info)
+      VALUES (?, ?, ?, ?, ?, ?) RETURNING id
+    `);
     this.#selectBoard = this.#database.prepare(`
-      SELECT s.user_id AS userId, s.value, s.submitted_at AS submittedAt, s.game_id AS gameId, s.game_info AS gameInfo,
-        u.username, u.profile_picture AS profilePicture
+      SELECT s.id AS sid, s.user_id AS userId, s.type, s.value, s.submitted_at AS submittedAt,
+        s.game_id AS gameId, s.game_info AS gameInfo, u.username, u.profile_picture AS profilePicture
       FROM scores s JOIN users u ON u.id = s.user_id
-      WHERE s.game_id = ? AND s.game_info = ?
+      WHERE s.game_id = ? AND s.game_info = ? AND s.type = ?
     `);
   }
 
@@ -72,16 +81,22 @@ export class SqliteScoreStorage implements ScoreStorage {
     return row ? { ...row } : null;
   }
 
-  async saveScore({ userId, value, submittedAt, gameId, gameInfo }: Score): Promise<void> {
-    this.#insertScore.run(userId, value, submittedAt, gameId, gameInfo);
+  async listUsers({ start, end }: PaginationQuery): Promise<User[]> {
+    const rows = this.#selectUsers.all(Math.max(end - start, 0), start) as unknown as User[];
+    return rows.map(row => ({ ...row }));
   }
 
-  async getLeaderboard({ gameId, gameInfo, start, end }: LeaderboardQuery): Promise<LeaderboardEntry[]> {
+  async saveScore({ userId, type, value, submittedAt, gameId, gameInfo }: NewScore): Promise<ScoreId> {
+    const row = this.#insertScore.get(userId, type, value, submittedAt, gameId, gameInfo) as { id: number };
+    return row.id;
+  }
+
+  async getLeaderboard({ gameId, gameInfo, type, start, end }: LeaderboardQuery): Promise<LeaderboardEntry[]> {
     const compare = this.#comparators.get(gameId);
     if (!compare) throw new Error(`No score comparator registered for game "${gameId}"`);
 
     const bestByUser = new Map<User['id'], BoardRow>();
-    for (const row of this.#selectBoard.all(gameId, gameInfo) as unknown as BoardRow[]) {
+    for (const row of this.#selectBoard.all(gameId, gameInfo, type) as unknown as BoardRow[]) {
       const best = bestByUser.get(row.userId);
       if (!best || compare(row, best) < 0) bestByUser.set(row.userId, row);
     }

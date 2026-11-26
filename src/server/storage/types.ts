@@ -1,3 +1,4 @@
+import type { PaginationQuery } from '../../shared/pagination.ts';
 import type { LeaderboardEntry, LeaderboardQuery, NewScore, Score, ScoreId, User } from '../../shared/scores.ts';
 
 export type {
@@ -28,6 +29,9 @@ export interface ScoreStorage {
    * @returns The stored user, or null if the ID is unknown
    */
   getUser(id: User['id']): Promise<User | null>;
+
+  /** List the requested page of users in ID order */
+  listUsers(page: PaginationQuery): Promise<User[]>;
 
   /** Save one attempt and return its assigned score ID, retaining earlier attempts */
   saveScore(score: NewScore): Promise<ScoreId>;
