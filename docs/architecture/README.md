@@ -18,6 +18,8 @@ The system needs comparable results for standings and clear control over where s
 - [Identity and score sharing](identity-and-sharing.md) covers account connection and the distinction between sending a score to friends and publishing it publicly, including deletion of public copies.
 - [Game runtime and local Library](game-library.md) covers how games integrate with the platform, from installation to reporting a round's outcome and suggesting practice.
 
+The [HTTP API contract](http-api.md) defines the routes and methods for accessing users, games, and scores, including leaderboard filtering and pagination.
+
 ## Building and operating the system
 
 Contributors define shared frontend/backend interfaces through the [review process](../../CONTRIBUTING.md#adding-or-changing-a-shared-interface) before implementing dependent features. The [README](../../README.md#local-development) and [test guide](../../TESTING.md) cover local setup and checks. [Deployment](deployment.md) describes live deployment, the shared test environment, and game distribution.

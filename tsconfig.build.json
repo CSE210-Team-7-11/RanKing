@@ -3,8 +3,8 @@
   "compilerOptions": {
     "noEmit": false,
     "noEmitOnError": true,
-    "rootDir": "src/server",
-    "outDir": "dist/server"
+    "rootDir": "src",
+    "outDir": "dist"
   },
-  "include": ["src/server/**/*.ts"]
+  "include": ["src/server/**/*.ts", "src/shared/**/*.ts"]
 }
